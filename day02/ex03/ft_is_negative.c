@@ -1,7 +1,7 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                       :::      ::::::::    */
-/*     ft_print_numbers.c                               :+:      :+:    :+:   */
+/*     ft_is_negative.c                                 :+:      :+:    :+:   */
 /*                                                   +:+ +:+         +:+      */
 /*     By: dfan                                    +#+  +:+       +#+         */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,21 @@
 /*                                                                            */
 /******************************************************************************/
 
-#include "../ft_putchar.h"
+
+int ft_putchar(char c);
 
 
-void ft_print_numbers(void) {
-	char ch;
-	ch = '0';
-
-	while (ch <= '9') {
-		ft_putchar(ch);
-		ch++;
-	}
-
-	ft_putchar('\n');
+void ft_is_negative(int n) {
+  char N = 'N';
+  char P = 'P';
+  ft_putchar(n < 0 ? N : P);
+  ft_putchar('\n');
 }
 
 
 int main() {
-	ft_print_alphabet();
-	return 0;
+  ft_is_negative(5);
+  ft_is_negative(0);
+  ft_is_negative(-5);
+  return 0;
 }
