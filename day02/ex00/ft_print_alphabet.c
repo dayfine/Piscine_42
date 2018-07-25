@@ -1,10 +1,17 @@
-#include <stdio.h>
+/******************************************************************************/
+/*                                                                            */
+/*                                                       :::      ::::::::    */
+/*     ft_print_alphabet.c                              :+:      :+:    :+:   */
+/*                                                   +:+ +:+         +:+      */
+/*     By: dfan                                    +#+  +:+       +#+         */
+/*                                                +#+#+#+#+#+   +#+           */
+/*     Created: 2018/07/25 by dfan.                    #+#    #+#             */
+/*                                                    ###   ########.fr       */
+/*                                                                            */
+/******************************************************************************/
 
 
-int ft_putchar(char c) {
-	printf("%c", c);
-	return 0;
-}
+int ft_putchar(char c);
 
 
 void ft_print_alphabet(void) {
@@ -15,6 +22,8 @@ void ft_print_alphabet(void) {
 		ft_putchar(ch);
 		ch++;
 	}
+
+	ft_putchar('\n');
 }
 
 
