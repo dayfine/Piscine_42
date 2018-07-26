@@ -29,5 +29,8 @@ int   main(void)
 
 	printf("%s\n", "==== Print Comb ====");
 	ft_print_comb();
+
+	printf("%s\n", "==== Print Comb 2====");
+	ft_print_comb2();
 	return (0);
 }
