@@ -30,7 +30,11 @@ int   main(void)
 	printf("%s\n", "==== Print Comb ====");
 	ft_print_comb();
 
-	printf("%s\n", "==== Print Comb 2====");
+	printf("%s\n", "==== Print Comb 2 ====");
 	ft_print_comb2();
+
+	printf("%s\n", "==== Put Numbers ====");
+	ft_putnbr(42);
+    ft_putnbr(1234);
 	return (0);
 }
