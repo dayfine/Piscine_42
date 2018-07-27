@@ -10,39 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void print_util(int arr[], int target_length)
+void	print_util(int arr[], int target_length)
 {
 	int i;
 	int is_last;
+
 	i = 0;
 	is_last = 1;
-
-
 	while (i < target_length)
 	{
-		if (i != arr[i] + 1) {
+		if (i != arr[i] + 1)
+		{
 			is_last = 0;
 		}
 		ft_putchar(arr[i++] + 48);
-
 	}
-
-	if (is_last == 0) {
+	if (is_last == 0)
+	{
 		ft_putchar(',');
 		ft_putchar(' ');
 	}
-
 }
 
-void  combination_rec(int partial[], int start, int index, int target_length)
+void	combination_rec(int partial[], int start, int index, int target_length)
 {
 	int i;
 
 	i = start;
-	if (index == target_length) {
+	if (index == target_length)
+	{
 		print_util(partial, target_length);
 	}
-
 	while (i <= 9)
 	{
 		partial[index] = i;
@@ -50,9 +48,11 @@ void  combination_rec(int partial[], int start, int index, int target_length)
 		i += 1;
 	}
 }
-void  ft_print_combn(int target_length)
+
+void	ft_print_combn(int target_length)
 {
 	int partial[target_length];
-	combination_rec(partial, 0, 0, target_length);
-}
 
+	combination_rec(partial, 0, 0, target_length);
+	ft_putchar('\n');
+}

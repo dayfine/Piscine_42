@@ -10,21 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_putnbr(int nb)
+int		ft_putchar(char c);
+
+void	ft_putnbr(int nb)
 {
-    char digits[20];
-    int i = 0;
+	int i;
+	char digits[20];
 
-    while (nb >= 1)
-    {
-        digits[i++] = nb % 10;
-        nb = nb/10;
-    }
-
-    while (i > 0)
-    {
-        ft_putchar(digits[--i] + 48);
-    }
-
-    ft_putchar('\n');
+	i = 0;
+	while (nb >= 1)
+	{
+		digits[i++] = nb % 10;
+		nb = nb / 10;
+	}
+	while (i > 0)
+	{
+		ft_putchar(digits[--i] + 48);
+	}
+	ft_putchar('\n');
 }
