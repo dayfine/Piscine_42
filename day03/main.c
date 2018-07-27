@@ -84,5 +84,20 @@ int   main(void)
 	str = "The meaning of life is 42.\n";
 	ft_putstr(str);
 
+
+	printf("%s\n", "==== 06 ft_putstr ====");
+	char *str_w_len;
+	str_w_len = "Life";
+	printf("Length: %d\n", ft_strlen(str_w_len));
+
+
+	printf("%s\n", "==== 07 ft_strrev ====");
+	// causes segment fault error when trying to run with other functions
+	char rev_str1[] = "";
+  	char rev_str2[] = "abcd12345";
+
+	// printf("reversed: %s;\n", ft_strrev(rev_str1));
+	// printf("reversed: %s;\n", ft_strrev(rev_str2));
+
 	return (0);
 }
