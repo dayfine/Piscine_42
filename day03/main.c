@@ -99,9 +99,9 @@ int   main(void)
 	// printf("reversed: %s;\n", ft_strrev(rev_str1));
 	// printf("reversed: %s;\n", ft_strrev(rev_str2));
 
+
 	printf("%s\n", "==== 08 ft_atoi ====");
-	// causes segment fault error when trying to run with other functions
-	// not handling overflow as we have not access to
+
 	printf("%d\n",ft_atoi(" 98993489"));
 	printf("%d\n",ft_atoi("tutorialspoint.com"));
 	printf("%d\n",ft_atoi("a"));
@@ -112,5 +112,13 @@ int   main(void)
 	printf("%d\n",ft_atoi("91283472332"));
 	printf("%d\n",ft_atoi("11111191283472332"));
 
+
+	printf("%s\n", "==== 09 ft_sort_integer_table ====");
+
+	int nums[] = {1, 2, 4, 5, 6, 9, 13, 1, 4, 2};
+	int i;
+	ft_sort_integer_table(nums, 10);
+	for (i = 0; i < 10; i++) printf("%d ", nums[i]);
+	printf("\n");
 	return (0);
 }
