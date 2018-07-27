@@ -12,7 +12,7 @@
 
 int		ft_putchar(char c);
 
-void	print_util(int result[])
+void	comb_print_util(int result[])
 {
 	ft_putchar(result[0]);
 	ft_putchar(result[1]);
@@ -37,7 +37,7 @@ void	ft_print_comb(void)
 			partial[2] = partial[1] + 1;
 			while (partial[2] <= '9')
 			{
-				print_util(partial);
+				comb_print_util(partial);
 				partial[2]++;
 			}
 			partial[1]++;

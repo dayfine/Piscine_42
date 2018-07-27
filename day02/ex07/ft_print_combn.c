@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	print_util(int arr[], int target_length)
+void	combn_print_util(int arr[], int target_length)
 {
 	int i;
 	int is_last;
@@ -39,7 +39,7 @@ void	combination_rec(int partial[], int start, int index, int target_length)
 	i = start;
 	if (index == target_length)
 	{
-		print_util(partial, target_length);
+		combn_print_util(partial, target_length);
 	}
 	while (i <= 9)
 	{
