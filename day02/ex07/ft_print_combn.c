@@ -10,43 +10,49 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void printUtil(int arr[], int target_length)
+void print_util(int arr[], int target_length)
 {
-    int i;
-    i = 0;
+	int i;
+	int is_last;
+	i = 0;
+	is_last = 1;
 
-    while (i < target_length)
-    {
-        printf("%d", arr[i]);
-        i += 1;
-    }
-    printf(", \n");
+
+	while (i < target_length)
+	{
+		if (i != arr[i] + 1) {
+			is_last = 0;
+		}
+		ft_putchar(arr[i++] + 48);
+
+	}
+
+	if (is_last == 0) {
+		ft_putchar(',');
+	  	ft_putchar(' ');
+	}
+
 }
 
-void combinationUtil(int partial[], int start, int end, int index, int target_length)
+void  combination_rec(int partial[], int start, int index, int target_length)
 {
-    int i;
+	int i;
 
-    i = start;
-    if (index == target_length) printUtil(partial, target_length);
+	i = start;
+	if (index == target_length) {
+		print_util(partial, target_length);
+	}
 
-    while (i <= end && target_length - i <= end - i + 1)
-    {
-        partial[index] = i;
-        combinationUtil(partial, i + 1, end, index + 1, target_length);
-        i += 1;
-    }
+	while (i <= 9)
+	{
+		partial[index] = i;
+		combination_rec(partial, i + 1, index + 1, target_length);
+		i += 1;
+	}
 }
-
-void printCombination(int target_length)
+void  ft_print_combn(int target_length)
 {
-    int partial[target_length];
-    combinationUtil(partial, 0, 9, 0, target_length);
-}
-
-int main()
-{
-    printCombination(1);
-    printCombination(2);
+	int partial[target_length];
+	combination_rec(partial, 0, 0, target_length);
 }
 
