@@ -21,6 +21,7 @@ int   main(void)
 	ft_ft(&num_ex01);
 	printf("%d\n", num_ex01);
 
+
 	printf("%s\n", "==== 01 ft_ultimate_ft ====");
 	int num_ex02 = 2;
 	int *ptr1;
@@ -46,6 +47,7 @@ int   main(void)
 	ft_ultimate_ft(ptr9);
 	printf("%d\n", num_ex02);
 
+
 	printf("%s\n", "==== 02 ft_swap ====");
 	int a = 42;
 	int b = 24;
@@ -54,6 +56,7 @@ int   main(void)
 	ft_swap(&a, &b);
 	printf("swapped\n");
 	printf("a: %d ; b: %d\n", a, b);
+
 
 	printf("%s\n", "==== 03 ft_div_mod ====");
 
@@ -66,14 +69,20 @@ int   main(void)
 	printf("dividing %d by %d\n", dem, nom);
 	printf("div: %d ; mod: %d\n", div, mod);
 
-	printf("%s\n", "==== 03 ft_ultimate_div_mod ====");
+
+	printf("%s\n", "==== 04 ft_ultimate_div_mod ====");
 	int ultimate_dem = 4242;
 	int ultimate_nom = 424;
 
 	printf("dividing %d by %d\n", ultimate_dem, ultimate_nom);
 	ft_ultimate_div_mod(&ultimate_dem, &ultimate_nom);
 	printf("div: %d ; mod: %d\n", ultimate_dem, ultimate_nom);
-	return 0;
+
+
+	printf("%s\n", "==== 05 ft_putstr ====");
+	char *str;
+	str = "The meaning of life is 42.\n";
+	ft_putstr(str);
 
 	return (0);
 }
