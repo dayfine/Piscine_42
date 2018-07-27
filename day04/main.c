@@ -42,9 +42,33 @@ int   main(void)
 
 
 	printf("%s\n", "==== 02 ft_iterative_power ====");
+	printf("Tesing ex02\n");
+    assert(ft_iterative_power(0, 0)==1);
+	assert(ft_iterative_power(1, 0)==1);
+	assert(ft_iterative_power(0, 1)==0);
+	assert(ft_iterative_power(0, -1)==0);
+	assert(ft_iterative_power(100, -2)==0);
+	assert(ft_iterative_power(1, -2)==0);
+	assert(ft_iterative_power(2, 3)==8);
+	assert(ft_iterative_power(2, 10)==1024);
+	assert(ft_iterative_power(5, 2)==25);
+	assert(ft_iterative_power(7, 3)==343);
+    printf("All tests passed for ex02\n");
 
 
 	printf("%s\n", "==== 03 ft_recursive_power ====");
+	printf("Tesing ex03\n");
+    assert(ft_recursive_power(0, 0)==1);
+	assert(ft_recursive_power(1, 0)==1);
+	assert(ft_recursive_power(0, 1)==0);
+	assert(ft_recursive_power(0, -1)==0);
+	assert(ft_recursive_power(100, -2)==0);
+	assert(ft_recursive_power(1, -2)==0);
+	assert(ft_recursive_power(2, 3)==8);
+	assert(ft_recursive_power(2, 10)==1024);
+	assert(ft_recursive_power(5, 2)==25);
+	assert(ft_recursive_power(7, 3)==343);
+    printf("All tests passed for ex03\n");
 
 
 	printf("%s\n", "==== 04 ft_fibonacci ====");
