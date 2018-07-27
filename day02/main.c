@@ -36,6 +36,8 @@ int   main(void)
 	printf("%s\n", "==== Put Numbers ====");
 	ft_putnbr(42);
     ft_putnbr(1234);
+	ft_putnbr(0);
+	ft_putnbr(-1);
 
     printf("%s\n", "==== Print Comb N ====");
 	ft_print_combn(1);
