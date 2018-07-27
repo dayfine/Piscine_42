@@ -99,5 +99,18 @@ int   main(void)
 	// printf("reversed: %s;\n", ft_strrev(rev_str1));
 	// printf("reversed: %s;\n", ft_strrev(rev_str2));
 
+	printf("%s\n", "==== 08 ft_atoi ====");
+	// causes segment fault error when trying to run with other functions
+	// not handling overflow as we have not access to
+	printf("%d\n",ft_atoi(" 98993489"));
+	printf("%d\n",ft_atoi("tutorialspoint.com"));
+	printf("%d\n",ft_atoi("a"));
+	printf("%d\n",ft_atoi("abc"));
+	printf("%d\n",ft_atoi(" -42"));
+	printf("%d\n",ft_atoi(" 14343 and abc"));
+	printf("%d\n",ft_atoi("-91283472332"));
+	printf("%d\n",ft_atoi("91283472332"));
+	printf("%d\n",ft_atoi("11111191283472332"));
+
 	return (0);
 }
