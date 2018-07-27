@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void  ft_print_reverse_alphabet(void)
+int		ft_putchar(char c);
+
+void	ft_print_reverse_alphabet(void)
 {
 	char ch;
 

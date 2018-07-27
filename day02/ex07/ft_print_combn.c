@@ -29,7 +29,7 @@ void print_util(int arr[], int target_length)
 
 	if (is_last == 0) {
 		ft_putchar(',');
-	  	ft_putchar(' ');
+		ft_putchar(' ');
 	}
 
 }

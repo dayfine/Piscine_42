@@ -10,6 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int		ft_putchar(char c);
+
+void	print_util(int result[])
+{
+	ft_putchar(result[0]);
+	ft_putchar(result[1]);
+	ft_putchar(result[2]);
+	if (!(result[0] == '7' && result[1] == '8' && result[2] == '9'))
+	{
+		ft_putchar(',');
+		ft_putchar(' ');
+	}
+}
 
 void	ft_print_comb(void)
 {
@@ -24,18 +37,12 @@ void	ft_print_comb(void)
 			partial[2] = partial[1] + 1;
 			while (partial[2] <= '9')
 			{
-				ft_putchar(partial[0]);
-				ft_putchar(partial[1]);
-				ft_putchar(partial[2]);
-				if (!(partial[0] == '7' && partial[1] == '8' && partial[2] == '9'))
-				{
-					ft_putchar(',');
-					ft_putchar(' ');
-				}
+				print_util(partial);
 				partial[2]++;
 			}
 			partial[1]++;
 		}
 		partial[0]++;
 	}
+	ft_putchar('\n');
 }

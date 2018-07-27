@@ -10,13 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_is_negative(int n)
-{
-	char N;
-	char P;
-	N = 'N';
-	P = 'P';
+int		ft_putchar(char c);
 
-	ft_putchar(n < 0 ? N : P);
+void	ft_is_negative(int num)
+{
+	char n;
+	char p;
+
+	n = 'N';
+	p = 'P';
+	ft_putchar(num < 0 ? n : p);
 	ft_putchar('\n');
 }
