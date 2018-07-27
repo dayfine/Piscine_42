@@ -17,15 +17,26 @@ void	ft_putnbr(int nb)
 	int		i;
 	char	digits[20];
 
-	i = 0;
-	while (nb >= 1)
+	if (nb == 0)
 	{
-		digits[i++] = nb % 10;
-		nb = nb / 10;
+		ft_putchar('0');
 	}
-	while (i > 0)
+	else
 	{
-		ft_putchar(digits[--i] + 48);
+		if (nb < 0)
+		{
+			nb = -nb;
+			ft_putchar('-');
+		}
+		while (nb >= 1)
+		{
+			digits[i++] = nb % 10;
+			nb = nb / 10;
+		}
+		while (i > 0)
+		{
+			ft_putchar(digits[--i] + 48);
+		}
 	}
 	ft_putchar('\n');
 }
