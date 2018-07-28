@@ -44,5 +44,4 @@ void	ft_print_comb(void)
 		}
 		partial[0]++;
 	}
-	ft_putchar('\n');
 }

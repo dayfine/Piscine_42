@@ -20,5 +20,4 @@ void	ft_is_negative(int num)
 	n = 'N';
 	p = 'P';
 	ft_putchar(num < 0 ? n : p);
-	ft_putchar('\n');
 }

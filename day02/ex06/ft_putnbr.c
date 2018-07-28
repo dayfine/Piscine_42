@@ -38,5 +38,4 @@ void	ft_putnbr(int nb)
 			ft_putchar(digits[--i] + 48);
 		}
 	}
-	ft_putchar('\n');
 }

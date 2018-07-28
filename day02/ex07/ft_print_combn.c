@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int		ft_putchar(char c);
+
 void	combn_print_util(int arr[], int target_length)
 {
 	int i;
@@ -54,5 +56,4 @@ void	ft_print_combn(int target_length)
 	int partial[target_length];
 
 	combination_rec(partial, 0, 0, target_length);
-	ft_putchar('\n');
 }

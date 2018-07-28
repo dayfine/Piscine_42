@@ -56,5 +56,4 @@ void	ft_print_comb2(void)
 		}
 		partial1[0]++;
 	}
-	ft_putchar('\n');
 }
