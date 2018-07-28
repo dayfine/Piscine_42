@@ -6,7 +6,7 @@
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 16:21:37 by dfan              #+#    #+#             */
-/*   Updated: 2018/07/27 16:22:04 by dfan             ###   ########.fr       */
+/*   Updated: 2018/07/28 09:09:08 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@ int		ft_sqrt(int nb)
 {
 	int trial;
 
-    trial = 1;
+	trial = 1;
 	if (nb <= 0)
 	{
 		return (0);
 	}
-    while (trial * trial <= nb)
+	while (trial * trial <= nb)
 	{
 		if (trial * trial == nb)
 		{
-			return trial;
+			return (trial);
 		}
 		trial++;
 	}
-	return 0;
+	return (0);
 }

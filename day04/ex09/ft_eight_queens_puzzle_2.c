@@ -6,7 +6,7 @@
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/27 16:21:37 by dfan              #+#    #+#             */
-/*   Updated: 2018/07/27 16:22:04 by dfan             ###   ########.fr       */
+/*   Updated: 2018/07/28 09:15:29 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@ int		ft_8_check_queen_helper2(int queens[], int row, int col)
 	int idx;
 
 	idx = 1;
-	while (idx < row) {
+	while (idx < row)
+	{
 		if (queens[idx - 1] == col
-			|| idx - row ==  queens[idx - 1] - col
-			|| row - idx ==  queens[idx - 1] - col)
+			|| idx - row == queens[idx - 1] - col
+			|| row - idx == queens[idx - 1] - col)
 		{
-			return 0;
+			return (0);
 		}
 		idx++;
 	}
-	return 1;
+	return (1);
 }
 
 void	ft_8_queen_helper2(int partial[], int queen_count)
@@ -43,8 +44,7 @@ void	ft_8_queen_helper2(int partial[], int queen_count)
 		}
 		ft_putchar('\n');
 	}
-
-    i = 1;
+	i = 1;
 	while (i <= 8)
 	{
 		if (ft_8_check_queen_helper2(partial, queen_count + 1, i))
