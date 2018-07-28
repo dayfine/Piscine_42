@@ -23,9 +23,9 @@ int		ft_is_prime(int nb)
 	{
 		if (nb % trial == 0)
 		{
-			return 0;
+			return (0);
 		}
 		trial++;
 	}
-	return 1;
+	return (1);
 }

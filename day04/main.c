@@ -116,9 +116,25 @@ int   main(void)
 
 
 	printf("%s\n", "==== 07 ft_find_next_prime ====");
+	printf("Tesing ex07\n");
+	assert(ft_find_next_prime(-2)==2);
+	assert(ft_find_next_prime(-1)==2);
+	assert(ft_find_next_prime(0)==2);
+	assert(ft_find_next_prime(1)==2);
+	assert(ft_find_next_prime(2)==2);
+	assert(ft_find_next_prime(3)==3);
+	assert(ft_find_next_prime(4)==5);
+	assert(ft_find_next_prime(9)==11);
+	assert(ft_find_next_prime(13)==13);
+	assert(ft_find_next_prime(17)==17);
+	assert(ft_find_next_prime(21)==23);
+	printf("All tests passed for ex07\n");
 
 
 	printf("%s\n", "==== 08 ft_eight_queens_puzzle ====");
+	printf("Tesing ex08\n");
+	assert(ft_8_queen_count()==92);
+	printf("All tests passed for ex08\n");
 
 
 	printf("%s\n", "==== 09 ft_eight_queens_puzzle_2 ====");
