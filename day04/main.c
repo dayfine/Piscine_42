@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+#include "./ft_putchar.c"
 #include "./ex00/ft_iterative_factorial.c"
 #include "./ex01/ft_recursive_factorial.c"
 #include "./ex02/ft_iterative_power.c"
@@ -133,10 +134,11 @@ int   main(void)
 
 	printf("%s\n", "==== 08 ft_eight_queens_puzzle ====");
 	printf("Tesing ex08\n");
-	assert(ft_8_queen_count()==92);
+	assert(ft_eight_queens_puzzle()==92);
 	printf("All tests passed for ex08\n");
 
 
 	printf("%s\n", "==== 09 ft_eight_queens_puzzle_2 ====");
+	ft_eight_queens_puzzle_2();
 	return (0);
 }

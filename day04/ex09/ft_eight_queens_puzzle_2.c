@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_eight_queens_puzzle2.c                          :+:      :+:    :+:   */
+/*   ft_eight_queens_puzzle_2.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -9,6 +9,8 @@
 /*   Updated: 2018/07/27 16:22:04 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int		ft_putchar(char c);
 
 int		ft_8_check_queen_helper2(int queens[], int row, int col)
 {
@@ -27,13 +29,19 @@ int		ft_8_check_queen_helper2(int queens[], int row, int col)
 	return 1;
 }
 
-void	ft_8_queen_helper2(int partial[], int queen_count, int *solution_count)
+void	ft_8_queen_helper2(int partial[], int queen_count)
 {
 	int i;
 
+	i = 0;
 	if (queen_count == 8)
 	{
-		*solution_count = *solution_count + 1;
+		while (i < 8)
+		{
+			ft_putchar(48 + partial[i]);
+			i++;
+		}
+		ft_putchar('\n');
 	}
 
     i = 1;
@@ -42,18 +50,15 @@ void	ft_8_queen_helper2(int partial[], int queen_count, int *solution_count)
 		if (ft_8_check_queen_helper2(partial, queen_count + 1, i))
 		{
 			partial[queen_count] = i;
-			ft_8_queen_helper2(partial, queen_count + 1, solution_count);
+			ft_8_queen_helper2(partial, queen_count + 1);
 		}
 		i++;
 	}
 }
 
-int		ft_eight_queens_puzzle(void)
+void	ft_eight_queens_puzzle_2(void)
 {
-	int solution_count;
 	int partial[8];
 
-	solution_count = 0;
-	ft_8_queen_helper(partial, 0, &solution_count);
-	return (solution_count);
+	ft_8_queen_helper2(partial, 0);
 }
