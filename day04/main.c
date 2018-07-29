@@ -69,6 +69,7 @@ int   main(void)
 	assert(ft_recursive_power(2, 10)==1024);
 	assert(ft_recursive_power(5, 2)==25);
 	assert(ft_recursive_power(7, 3)==343);
+	assert(ft_recursive_power(2, 9999)==-1);
 	printf("All tests passed for ex03\n");
 
 

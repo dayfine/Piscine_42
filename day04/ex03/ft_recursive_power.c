@@ -12,6 +12,10 @@
 
 int		ft_recursive_power(int nb, int power)
 {
+	if (power > 8192)
+	{
+		return (-1);
+	}
 	if (power < 0)
 	{
 		return (0);
