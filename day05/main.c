@@ -22,9 +22,9 @@
 #include "./ex16/ft_strcat.c"
 #include "./ex17/ft_strncat.c"
 #include "./ex18/ft_strlcat.c"
-// #include "./ex19/ft_strlcpy.c"
-// #include "./ex20/ft_putnbr_base.c"
-// #include "./ex21/ft_atoi_base.c"
+#include "./ex19/ft_strlcpy.c"
+#include "./ex20/ft_putnbr_base.c"
+#include "./ex21/ft_atoi_base.c"
 // #include "./ex22/ft_putstr_non_printable.c"
 // #include "./ex23/ft_print_memory.c"
 
@@ -484,5 +484,116 @@ int   main(void)
 		assert(strcmp(ex18_dest3, ex18_std_dest3)==0);
 
 		printf("All tests passed for ex18\n");
+	}
+
+	printf("==== 19 ft_strlcpy ====\n");
+	{
+		printf("Tesing ex19\n");
+		char ex19_src[50];
+		char ex19_dest1[10], ex19_dest2[13], ex19_dest3[50];
+		char ex19_std_dest1[10], ex19_std_dest2[13], ex19_std_dest3[50];
+
+		ft_strcpy(ex19_src,  "Hello World!");
+
+		assert(ft_strlcpy(ex19_dest1, ex19_src, 10)==12);
+		assert(ft_strlcpy(ex19_dest2, ex19_src, 13)==12);
+		assert(ft_strlcpy(ex19_dest3, ex19_src, 50)==12);
+		assert(strlcpy(ex19_std_dest1, ex19_src, 10)==12);
+		assert(strlcpy(ex19_std_dest2, ex19_src, 13)==12);
+		assert(strlcpy(ex19_std_dest3, ex19_src, 50)==12);
+
+		assert(strcmp(ex19_dest1, "Hello Wor")==0);
+		assert(strcmp(ex19_dest2, "Hello World!")==0);
+		assert(strcmp(ex19_dest3, "Hello World!")==0);
+		assert(strcmp(ex19_dest1, ex19_std_dest1)==0);
+		assert(strcmp(ex19_dest2, ex19_std_dest2)==0);
+		assert(strcmp(ex19_dest3, ex19_std_dest3)==0);
+
+		printf("All tests passed for ex19\n");
+	}
+
+	printf("==== 20 ft_putnbr_base ====\n");
+	{
+		printf("Tesing ex20\n");
+		{
+			printf("Should display nothing in case of invalid arguments\n");
+			{
+				ft_putnbr_base(15, "");
+				ft_putnbr_base(15, "1");
+				ft_putnbr_base(15, "144");
+				ft_putnbr_base(15, "14+35");
+				ft_putnbr_base(15, "145-09");
+			}
+
+			printf("Should print number in correct radix\n");
+			{
+				printf("\nBase: '01'\n");
+				ft_putnbr_base(15, "01");
+				printf("\nBase: '0123456789'\n");
+				ft_putnbr_base(15, "0123456789");
+				printf("\nBase: '0123456789ABCDEF'\n");
+				ft_putnbr_base(15, "0123456789ABCDEF");
+				printf("\nBase: 'fivte3n'\n");
+				ft_putnbr_base(15, "fivte3n");
+				printf("\nBase: '9876543210'\n");
+				ft_putnbr_base(15, "9876543210");
+				printf("\n");
+			}
+
+			printf("Should handle negative numbers\n");
+			{
+				printf("\nBase: '01'\n");
+				ft_putnbr_base(-15, "01");
+				printf("\nBase: '0123456789'\n");
+				ft_putnbr_base(-15, "0123456789");
+				printf("\nBase: '0123456789ABCDEF'\n");
+				ft_putnbr_base(-15, "0123456789ABCDEF");
+				printf("\nBase: 'fivte3n'\n");
+				ft_putnbr_base(-15, "fivte3n");
+				printf("\nBase: '9876543210'\n");
+				ft_putnbr_base(-15, "9876543210");
+				printf("\n");
+			}
+		}
+
+		printf("All tests passed for ex20\n");
+	}
+
+	printf("==== 21 ft_atoi_base ====\n");
+	{
+		printf("Tesing ex21\n");
+		{
+			printf("Should return 0 in case of invalid arguments\n");
+			{
+				assert(ft_atoi_base("15", "")==0);
+				assert(ft_atoi_base("15", "1")==0);
+				assert(ft_atoi_base("15", "144")==0);
+				assert(ft_atoi_base("15", "14+35")==0);
+				assert(ft_atoi_base("15", "145-09")==0);
+				assert(ft_atoi_base("", "14509")==0);
+				assert(ft_atoi_base("x15", "14509")==0);
+				assert(ft_atoi_base("+157", "14509")==0);
+			}
+
+			printf("Should print number in correct radix\n");
+			{
+				assert(ft_atoi_base("+1111", "01")==15);
+				assert(ft_atoi_base("+15", "0123456789")==15);
+				assert(ft_atoi_base("+F", "0123456789ABCDEF")==15);
+				assert(ft_atoi_base("+vi", "fivte3n")==15);
+				assert(ft_atoi_base("+84", "9876543210")==15);
+			}
+
+			printf("Should handle negative numbers\n");
+			{
+				assert(ft_atoi_base("-1111", "01")==-15);
+				assert(ft_atoi_base("-15", "0123456789")==-15);
+				assert(ft_atoi_base("-F", "0123456789ABCDEF")==-15);
+				assert(ft_atoi_base("-vi", "fivte3n")==-15);
+				assert(ft_atoi_base("-84", "9876543210")==-15);
+			}
+		}
+
+		printf("All tests passed for ex21\n");
 	}
 }
