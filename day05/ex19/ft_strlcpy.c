@@ -28,6 +28,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		}
 		bytes++;
 	}
-	*q = '\0';
+	if (size != 0)
+		*q = '\0';
 	return (bytes);
 }

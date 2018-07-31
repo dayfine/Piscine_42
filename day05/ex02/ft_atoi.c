@@ -12,6 +12,12 @@
 
 #include <limits.h>
 
+int		is_white_space(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n'
+			|| c == '\v' || c == '\f' || c == '\r');
+}
+
 int		ft_atoi(char *str)
 {
 	int sign;
@@ -21,7 +27,7 @@ int		ft_atoi(char *str)
 	i = 0;
 	curr_num = 0;
 	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+	while (is_white_space(str[i]))
 	{
 		i++;
 	}

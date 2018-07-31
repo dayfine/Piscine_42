@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
+#include <limits.h>
 
 #include "./ft_putchar.c"
 #include "./ex00/ft_putstr.c"
@@ -50,6 +51,11 @@ int   main(void)
 		printf("\n");
 		printf("Putting: '123'\n");
 		ft_putnbr(123);
+		printf("Putting: '2147483647'\n");
+		ft_putnbr(INT_MAX);
+		printf("\n");
+		printf("Putting: '-2147483648'\n");
+		ft_putnbr(INT_MIN);
 		printf("\n");
 	}
 
@@ -67,6 +73,7 @@ int   main(void)
 		assert(ft_atoi("91283472332")==2147483647);
 		assert(ft_atoi("11111191283472332")==2147483647);
 		assert(ft_atoi("     \t  \n  -6272")==-6272);
+		assert(ft_atoi("\t\n\v\f\r +256")==256);
 
 		printf("All tests passed for ex02\n");
 	}
@@ -131,13 +138,22 @@ int   main(void)
 			ft_strncpy(ex04_dest1, ex04_str1, 2);
 			strncpy(ex04_dest1_std2, ex04_str1, 2);
 
-			ft_strncpy(ex04_dest2, ex04_str2, 8);
-			strncpy(ex04_dest2_std2, ex04_str2, 8);
+			ft_strncpy(ex04_dest2, ex04_str2, 20);
+			strncpy(ex04_dest2_std2, ex04_str2, 20);
 
 			assert(strcmp(ex04_dest1, "")==0);
-			assert(strcmp(ex04_dest2, "He11o W0")==0);
+			assert(strcmp(ex04_dest2, "He11o W0rld!")==0);
 
 			assert(strcmp(ex04_dest1, ex04_dest1_std2)==0);
+			assert(strcmp(ex04_dest2, ex04_dest2_std2)==0);
+		}
+
+		printf("What if n < len(str)?\n");
+		{
+			ft_strncpy(ex04_dest2, "YY", 1);
+			strncpy(ex04_dest2_std2, "YY", 1);
+
+			assert(strcmp(ex04_dest2, "Ye11o W0rld!")==0);
 			assert(strcmp(ex04_dest2, ex04_dest2_std2)==0);
 		}
 
@@ -184,6 +200,7 @@ int   main(void)
 		char ex06_str5[] = "hdz tubbj!";
 		char ex06_str6[] = "hdy stack!";
 		char ex06_str7[] = "hey stack!";
+		char ex06_str8[] = "";
 
 		printf("Should compare and return differences\n");
 		{
@@ -193,6 +210,8 @@ int   main(void)
 			assert(strcmp(ex06_str1, ex06_str5)==1);
 			assert(strcmp(ex06_str1, ex06_str6)==1);
 			assert(strcmp(ex06_str1, ex06_str7)==0);
+			assert(strcmp(ex06_str1, ex06_str8)==104);
+			assert(strcmp(ex06_str8, ex06_str1)==-104);
 
 			assert(ft_strcmp(ex06_str1, ex06_str2)==-15);
 			assert(ft_strcmp(ex06_str1, ex06_str3)==4);
@@ -200,6 +219,8 @@ int   main(void)
 			assert(ft_strcmp(ex06_str1, ex06_str5)==1);
 			assert(ft_strcmp(ex06_str1, ex06_str6)==1);
 			assert(ft_strcmp(ex06_str1, ex06_str7)==0);
+			assert(ft_strcmp(ex06_str1, ex06_str8)==104);
+			assert(ft_strcmp(ex06_str8, ex06_str1)==-104);
 		}
 
 		printf("All tests passed for ex06\n");
@@ -457,31 +478,50 @@ int   main(void)
 	printf("==== 18 ft_strlcat ====\n");
 	{
 		printf("Tesing ex18\n");
-		char ex18_src[50];
-		char ex18_dest1[10], ex18_dest2[13], ex18_dest3[50];
-		char ex18_std_dest1[10], ex18_std_dest2[13], ex18_std_dest3[50];
 
-		ft_strcpy(ex18_src,  "World!");
-		ft_strcpy(ex18_dest1, "Hello ");
-		ft_strcpy(ex18_dest2, "Hello ");
-		ft_strcpy(ex18_dest3, "Hello ");
-		ft_strcpy(ex18_std_dest1, "Hello ");
-		ft_strcpy(ex18_std_dest2, "Hello ");
-		ft_strcpy(ex18_std_dest3, "Hello ");
+		printf("Normal Behavior");
+		{
+			char ex18_src[50];
+			char ex18_dest1[10], ex18_dest2[13], ex18_dest3[50];
+			char ex18_std_dest1[10], ex18_std_dest2[13], ex18_std_dest3[50];
 
-		assert(ft_strlcat(ex18_dest1, ex18_src, 10)==12);
-		assert(ft_strlcat(ex18_dest2, ex18_src, 13)==12);
-		assert(ft_strlcat(ex18_dest3, ex18_src, 50)==12);
-		assert(strlcat(ex18_std_dest1, ex18_src, 10)==12);
-		assert(strlcat(ex18_std_dest2, ex18_src, 13)==12);
-		assert(strlcat(ex18_std_dest3, ex18_src, 50)==12);
+			ft_strcpy(ex18_src,  "World!");
+			ft_strcpy(ex18_dest1, "Hello ");
+			ft_strcpy(ex18_dest2, "Hello ");
+			ft_strcpy(ex18_dest3, "Hello ");
+			ft_strcpy(ex18_std_dest1, "Hello ");
+			ft_strcpy(ex18_std_dest2, "Hello ");
+			ft_strcpy(ex18_std_dest3, "Hello ");
 
-		assert(strcmp(ex18_dest1, "Hello Wor")==0);
-		assert(strcmp(ex18_dest2, "Hello World!")==0);
-		assert(strcmp(ex18_dest3, "Hello World!")==0);
-		assert(strcmp(ex18_dest1, ex18_std_dest1)==0);
-		assert(strcmp(ex18_dest2, ex18_std_dest2)==0);
-		assert(strcmp(ex18_dest3, ex18_std_dest3)==0);
+			assert(ft_strlcat(ex18_dest1, ex18_src, 10)==12);
+			assert(ft_strlcat(ex18_dest2, ex18_src, 13)==12);
+			assert(ft_strlcat(ex18_dest3, ex18_src, 50)==12);
+			assert(strlcat(ex18_std_dest1, ex18_src, 10)==12);
+			assert(strlcat(ex18_std_dest2, ex18_src, 13)==12);
+			assert(strlcat(ex18_std_dest3, ex18_src, 50)==12);
+
+			assert(strcmp(ex18_dest1, "Hello Wor")==0);
+			assert(strcmp(ex18_dest2, "Hello World!")==0);
+			assert(strcmp(ex18_dest3, "Hello World!")==0);
+			assert(strcmp(ex18_dest1, ex18_std_dest1)==0);
+			assert(strcmp(ex18_dest2, ex18_std_dest2)==0);
+			assert(strcmp(ex18_dest3, ex18_std_dest3)==0);
+		}
+
+		printf("It will then NUL-terminate, unless dstsize is 0 or the original dst string was longer than dstsize");
+		{
+			char test[256] = "\0zxcvzxcvzxcvxzcvzxcv";
+			assert(ft_strlcat(test, "asdf", 16)==4);
+			assert(strcmp(test, "asdf")==0);
+			assert(ft_strlcat(test, "asdf", 6)==8);
+			assert(strcmp(test, "asdfa")==0);
+			assert(ft_strlcat(test, "asdf", 4)==8);
+			assert(strcmp(test, "asdfa")==0);
+			assert(ft_strlcat(test, "", 16)==5);
+			assert(strcmp(test, "asdfa")==0);
+			assert(ft_strlcat(test, "asdf", 0)==4);
+			assert(strcmp(test, "asdfa")==0);
+		}
 
 		printf("All tests passed for ex18\n");
 	}
@@ -489,25 +529,42 @@ int   main(void)
 	printf("==== 19 ft_strlcpy ====\n");
 	{
 		printf("Tesing ex19\n");
-		char ex19_src[50];
-		char ex19_dest1[10], ex19_dest2[13], ex19_dest3[50];
-		char ex19_std_dest1[10], ex19_std_dest2[13], ex19_std_dest3[50];
 
-		ft_strcpy(ex19_src,  "Hello World!");
+		printf("Normal Behavior");
+		{
+			char ex19_src[50];
+			char ex19_dest1[10], ex19_dest2[13], ex19_dest3[50];
+			char ex19_std_dest1[10], ex19_std_dest2[13], ex19_std_dest3[50];
 
-		assert(ft_strlcpy(ex19_dest1, ex19_src, 10)==12);
-		assert(ft_strlcpy(ex19_dest2, ex19_src, 13)==12);
-		assert(ft_strlcpy(ex19_dest3, ex19_src, 50)==12);
-		assert(strlcpy(ex19_std_dest1, ex19_src, 10)==12);
-		assert(strlcpy(ex19_std_dest2, ex19_src, 13)==12);
-		assert(strlcpy(ex19_std_dest3, ex19_src, 50)==12);
+			ft_strcpy(ex19_src,  "Hello World!");
 
-		assert(strcmp(ex19_dest1, "Hello Wor")==0);
-		assert(strcmp(ex19_dest2, "Hello World!")==0);
-		assert(strcmp(ex19_dest3, "Hello World!")==0);
-		assert(strcmp(ex19_dest1, ex19_std_dest1)==0);
-		assert(strcmp(ex19_dest2, ex19_std_dest2)==0);
-		assert(strcmp(ex19_dest3, ex19_std_dest3)==0);
+			assert(ft_strlcpy(ex19_dest1, ex19_src, 10)==12);
+			assert(ft_strlcpy(ex19_dest2, ex19_src, 13)==12);
+			assert(ft_strlcpy(ex19_dest3, ex19_src, 50)==12);
+			assert(strlcpy(ex19_std_dest1, ex19_src, 10)==12);
+			assert(strlcpy(ex19_std_dest2, ex19_src, 13)==12);
+			assert(strlcpy(ex19_std_dest3, ex19_src, 50)==12);
+
+			assert(strcmp(ex19_dest1, "Hello Wor")==0);
+			assert(strcmp(ex19_dest2, "Hello World!")==0);
+			assert(strcmp(ex19_dest3, "Hello World!")==0);
+			assert(strcmp(ex19_dest1, ex19_std_dest1)==0);
+			assert(strcmp(ex19_dest2, ex19_std_dest2)==0);
+			assert(strcmp(ex19_dest3, ex19_std_dest3)==0);
+		}
+
+		printf("It will then NUL-terminate, unless dstsize is 0 or the original dst string was longer than dstsize");
+		{
+			char test19[256] = "\0zxcvzxcvzxcvxzcvzxcv";
+			assert(ft_strlcpy(test19, "asdf", 16)==4);
+			assert(strcmp(test19, "asdf")==0);
+			assert(ft_strlcpy(test19, "uiop", 0)==4);
+			assert(strcmp(test19, "asdf")==0);
+			assert(ft_strlcpy(test19, "qwerty", 4)==6);
+			assert(strcmp(test19, "qwe")==0);
+			assert(ft_strlcpy(test19, "", 4)==0);
+			assert(strcmp(test19, "")==0);
+		}
 
 		printf("All tests passed for ex19\n");
 	}
