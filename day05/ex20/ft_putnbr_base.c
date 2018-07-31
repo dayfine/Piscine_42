@@ -12,7 +12,7 @@
 
 int		ft_putchar(char c);
 
-int		is_valid_base(char *base)
+int		is_valid_base2(char *base)
 {
 	int i;
 	int j;
@@ -44,7 +44,7 @@ void	ft_putnbr_base(int nbr, char *base)
 	int		i;
 	char	digits[50];
 
-	radix = is_valid_base(base);
+	radix = is_valid_base2(base);
 	if (radix == 0)
 		return ;
 	i = 0;

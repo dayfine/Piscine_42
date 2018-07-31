@@ -25,7 +25,7 @@
 #include "./ex19/ft_strlcpy.c"
 #include "./ex20/ft_putnbr_base.c"
 #include "./ex21/ft_atoi_base.c"
-// #include "./ex22/ft_putstr_non_printable.c"
+#include "./ex22/ft_putstr_non_printable.c"
 // #include "./ex23/ft_print_memory.c"
 
 int   main(void)
@@ -595,5 +595,32 @@ int   main(void)
 		}
 
 		printf("All tests passed for ex21\n");
+	}
+
+	printf("==== 22 ft_putstr_non_printable ====\n");
+	{
+		printf("Tesing ex22\n");
+		{
+			printf("Should print normal string\n");
+			{
+				printf("You should see on next line: ''\n");
+				ft_putstr_non_printable("");
+				printf("\n");
+				printf("You should see on next line: 'The meaning of life is 42.'\n");
+				ft_putstr_non_printable("The meaning of life is 42.");
+				printf("\n");
+			}
+			printf("Should convert nonprintable to hex\n");
+			{
+				printf("You should see on next line: '\\0a'\n");
+				ft_putstr_non_printable("\n");
+				printf("\n");
+				printf("You should see on next line: 'Coucou\\0atu vas bien ?'\n");
+				ft_putstr_non_printable("Coucou\ntu vas bien ?");
+				printf("\n");
+			}
+		}
+
+		printf("All tests passed for ex22\n");
 	}
 }
