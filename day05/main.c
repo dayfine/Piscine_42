@@ -19,9 +19,9 @@
 #include "./ex13/ft_str_is_lowercase.c"
 #include "./ex14/ft_str_is_uppercase.c"
 #include "./ex15/ft_str_is_printable.c"
-// #include "./ex16/ft_strcat.c"
-// #include "./ex17/ft_strncat.c"
-// #include "./ex18/ft_strlcat.c"
+#include "./ex16/ft_strcat.c"
+#include "./ex17/ft_strncat.c"
+#include "./ex18/ft_strlcat.c"
 // #include "./ex19/ft_strlcpy.c"
 // #include "./ex20/ft_putnbr_base.c"
 // #include "./ex21/ft_atoi_base.c"
@@ -131,11 +131,11 @@ int   main(void)
 			ft_strncpy(ex04_dest1, ex04_str1, 2);
 			strncpy(ex04_dest1_std2, ex04_str1, 2);
 
-			ft_strncpy(ex04_dest2, ex04_str2, 15);
-			strncpy(ex04_dest2_std2, ex04_str2, 15);
+			ft_strncpy(ex04_dest2, ex04_str2, 8);
+			strncpy(ex04_dest2_std2, ex04_str2, 8);
 
 			assert(strcmp(ex04_dest1, "")==0);
-			assert(strcmp(ex04_dest2, "He11o W0rld!")==0);
+			assert(strcmp(ex04_dest2, "He11o W0")==0);
 
 			assert(strcmp(ex04_dest1, ex04_dest1_std2)==0);
 			assert(strcmp(ex04_dest2, ex04_dest2_std2)==0);
@@ -401,5 +401,88 @@ int   main(void)
 		}
 
 		printf("All tests passed for ex15\n");
+	}
+
+	printf("==== 16 ft_strcat ====\n");
+	{
+		printf("Tesing ex16\n");
+		char ex16_src[50], ex16_dest[50], ex16_std_dest[50];
+
+		ft_strcpy(ex16_src,  "World!");
+		ft_strcpy(ex16_dest, "Hello ");
+		ft_strcpy(ex16_std_dest, "Hello ");
+
+		ft_strcat(ex16_dest, ex16_src);
+		strcat(ex16_std_dest, ex16_src);
+
+		assert(strcmp(ex16_dest, "Hello World!")==0);
+		assert(strcmp(ex16_dest, ex16_std_dest)==0);
+
+		printf("All tests passed for ex16\n");
+	}
+
+	printf("==== 17 ft_strncat ====\n");
+	{
+		printf("Tesing ex17\n");
+		char ex17_src[50];
+		char ex17_dest1[50], ex17_dest2[50], ex17_dest3[50];
+		char ex17_std_dest1[50], ex17_std_dest2[50], ex17_std_dest3[50];
+
+		ft_strcpy(ex17_src,  "World!");
+		ft_strcpy(ex17_dest1, "Hello ");
+		ft_strcpy(ex17_dest2, "Hello ");
+		ft_strcpy(ex17_dest3, "Hello ");
+		ft_strcpy(ex17_std_dest1, "Hello ");
+		ft_strcpy(ex17_std_dest2, "Hello ");
+		ft_strcpy(ex17_std_dest3, "Hello ");
+
+		ft_strncat(ex17_dest1, ex17_src, 0);
+		ft_strncat(ex17_dest2, ex17_src, 6);
+		ft_strncat(ex17_dest3, ex17_src, 30);
+		strncat(ex17_std_dest1, ex17_src, 0);
+		strncat(ex17_std_dest2, ex17_src, 6);
+		strncat(ex17_std_dest3, ex17_src, 30);
+
+		assert(strcmp(ex17_dest1, "Hello ")==0);
+		assert(strcmp(ex17_dest2, "Hello World!")==0);
+		assert(strcmp(ex17_dest3, "Hello World!")==0);
+
+		assert(strcmp(ex17_dest1, ex17_std_dest1)==0);
+		assert(strcmp(ex17_dest2, ex17_std_dest2)==0);
+		assert(strcmp(ex17_dest3, ex17_std_dest3)==0);
+
+		printf("All tests passed for ex17\n");
+	}
+
+	printf("==== 18 ft_strlcat ====\n");
+	{
+		printf("Tesing ex18\n");
+		char ex18_src[50];
+		char ex18_dest1[10], ex18_dest2[13], ex18_dest3[50];
+		char ex18_std_dest1[10], ex18_std_dest2[13], ex18_std_dest3[50];
+
+		ft_strcpy(ex18_src,  "World!");
+		ft_strcpy(ex18_dest1, "Hello ");
+		ft_strcpy(ex18_dest2, "Hello ");
+		ft_strcpy(ex18_dest3, "Hello ");
+		ft_strcpy(ex18_std_dest1, "Hello ");
+		ft_strcpy(ex18_std_dest2, "Hello ");
+		ft_strcpy(ex18_std_dest3, "Hello ");
+
+		assert(ft_strlcat(ex18_dest1, ex18_src, 10)==12);
+		assert(ft_strlcat(ex18_dest2, ex18_src, 13)==12);
+		assert(ft_strlcat(ex18_dest3, ex18_src, 50)==12);
+		assert(strlcat(ex18_std_dest1, ex18_src, 10)==12);
+		assert(strlcat(ex18_std_dest2, ex18_src, 13)==12);
+		assert(strlcat(ex18_std_dest3, ex18_src, 50)==12);
+
+		assert(strcmp(ex18_dest1, "Hello Wor")==0);
+		assert(strcmp(ex18_dest2, "Hello World!")==0);
+		assert(strcmp(ex18_dest3, "Hello World!")==0);
+		assert(strcmp(ex18_dest1, ex18_std_dest1)==0);
+		assert(strcmp(ex18_dest2, ex18_std_dest2)==0);
+		assert(strcmp(ex18_dest3, ex18_std_dest3)==0);
+
+		printf("All tests passed for ex18\n");
 	}
 }
