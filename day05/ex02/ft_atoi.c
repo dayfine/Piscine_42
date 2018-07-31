@@ -21,7 +21,7 @@ int		ft_atoi(char *str)
 	i = 0;
 	curr_num = 0;
 	sign = 1;
-	while (str[i] == ' ')
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
 	{
 		i++;
 	}
