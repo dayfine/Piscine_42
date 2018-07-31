@@ -611,6 +611,13 @@ int   main(void)
 				ft_putnbr_base(-15, "9876543210");
 				printf("\n");
 			}
+
+			printf("Should handle INT_MIN\n");
+			{
+				printf("\nBase: '0123456789abcdef' Expected: '-80000000'\n");
+				ft_putnbr_base(-2147483648, "0123456789abcdef");
+				printf("\n");
+			}
 		}
 
 		printf("All tests passed for ex20\n");
@@ -674,6 +681,9 @@ int   main(void)
 				printf("\n");
 				printf("You should see on next line: 'Coucou\\0atu vas bien ?'\n");
 				ft_putstr_non_printable("Coucou\ntu vas bien ?");
+				printf("\n");
+				printf("You should see on next line: 'asdf\\7f\\1fhi\\01\\fflol'\n");
+				ft_putstr_non_printable("asdf\x7f\x1fhi\x01\xfflol");
 				printf("\n");
 			}
 		}

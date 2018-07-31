@@ -16,7 +16,7 @@ int		get_simple_diff(char *s1, char *s2)
 		return (0);
 	if (s1[0] == '\0')
 		return (-s2[0]);
-	return s1[0];
+	return (s1[0]);
 }
 
 int		ft_strcmp(char *s1, char *s2)

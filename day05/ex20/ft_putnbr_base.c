@@ -40,9 +40,10 @@ int		is_valid_base2(char *base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int		radix;
-	int		i;
-	char	digits[50];
+	int				radix;
+	int				i;
+	unsigned int	abs_n;
+	char			digits[50];
 
 	radix = is_valid_base2(base);
 	if (radix == 0)
@@ -54,14 +55,12 @@ void	ft_putnbr_base(int nbr, char *base)
 		return ;
 	}
 	if (nbr < 0)
-	{
-		nbr = -nbr;
 		ft_putchar('-');
-	}
-	while (nbr >= 1)
+	abs_n = nbr < 0 ? -((unsigned int)(nbr)) : (unsigned int)(nbr);
+	while (abs_n >= 1)
 	{
-		digits[i++] = base[nbr % radix];
-		nbr = nbr / radix;
+		digits[i++] = base[abs_n % radix];
+		abs_n = abs_n / radix;
 	}
 	while (i > 0)
 		ft_putchar(digits[--i]);

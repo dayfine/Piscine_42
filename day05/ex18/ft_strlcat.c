@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-/* It will then NUL-terminate, unless dstsize is 0 or the original dst string
-     was longer than dstsize */
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	bytes;
@@ -33,9 +30,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	while ((ch = *p++))
 	{
 		if (bytes + 1 < size)
-		{
 			*q++ = ch;
-		}
 		bytes++;
 	}
 	if (!(size == 0 || orig_len > size))

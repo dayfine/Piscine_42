@@ -33,7 +33,7 @@ void	ft_putnbr(int nb)
 		ft_putchar('0');
 	if (nb == INT_MIN)
 		ft_print_int_min();
-	if (nb < 0 && nb != ft_putchar)
+	if (nb < 0 && nb != INT_MIN)
 	{
 		nb = -nb;
 		ft_putchar('-');

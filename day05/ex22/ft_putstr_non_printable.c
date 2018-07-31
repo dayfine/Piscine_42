@@ -12,9 +12,13 @@
 
 int		ft_putchar(char c);
 
-char	to_hex(int idx)
+void	print_hex(int idx)
 {
-	return ("0123456789abcdef"[idx]);
+	unsigned int	u_idx;
+
+	u_idx = idx < 0 ? (unsigned int)(idx + 256) : (unsigned int)idx;
+	ft_putchar("0123456789abcdef"[u_idx / 16]);
+	ft_putchar("0123456789abcdef"[u_idx % 16]);
 }
 
 int		is_printable_helper(char c)
@@ -25,8 +29,6 @@ int		is_printable_helper(char c)
 void	ft_putstr_non_printable(char *str)
 {
 	int		i;
-	char	to_print1;
-	char	to_print2;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -37,11 +39,8 @@ void	ft_putstr_non_printable(char *str)
 		}
 		else
 		{
-			to_print1 = to_hex(str[i] / 16);
-			to_print2 = to_hex(str[i] % 16);
 			ft_putchar('\\');
-			ft_putchar(to_print1);
-			ft_putchar(to_print2);
+			print_hex(str[i]);
 		}
 		i++;
 	}
