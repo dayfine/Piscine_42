@@ -23,15 +23,6 @@ void	ft_putstr4(char *str)
 	}
 }
 
-int		get_simple_diff_helper(char *s1, char *s2)
-{
-	if (s1[0] == '\0' && s2[0] == '\0')
-		return (0);
-	if (s1[0] == '\0')
-		return (-s2[0]);
-	return (s1[0]);
-}
-
 int		ft_strcmp_helper(char *s1, char *s2)
 {
 	int i;
@@ -52,9 +43,9 @@ int		ft_strcmp_helper(char *s1, char *s2)
 			neg_diff += ((pos_diff == 0 || neg_diff == 0) ? s1[i] - s2[i] : 0);
 		i++;
 	}
-	if (i == 0)
-		return (get_simple_diff_helper(s1, s2));
-	return (sign_tick >= 0 ? pos_diff : neg_diff);
+	if (sign_tick == 0)
+		return (s1[i] - s2[i]);
+	return (sign_tick > 0 ? pos_diff : neg_diff);
 }
 
 void	ft_sort_strings(char *strings[], int size)
@@ -80,14 +71,19 @@ void	ft_sort_strings(char *strings[], int size)
 
 int		main(int argc, char *argv[])
 {
-	int i;
+	int		i;
+	char	*program_name;
 
 	i = 1;
+	program_name = argv[0];
 	ft_sort_strings(argv, argc);
 	while (i < argc)
 	{
-		ft_putstr4(argv[i++]);
-		ft_putchar('\n');
+		if (ft_strcmp_helper(argv[i], program_name) != 0)
+		{
+			ft_putstr4(argv[i++]);
+			ft_putchar('\n');
+		}
 	}
 	return (0);
 }

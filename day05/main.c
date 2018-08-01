@@ -201,6 +201,8 @@ int   main(void)
 		char ex06_str6[] = "hdy stack!";
 		char ex06_str7[] = "hey stack!";
 		char ex06_str8[] = "";
+		char ex06_str9[] = "hey";
+		char ex06_str10[] = "hey s";
 
 		printf("Should compare and return differences\n");
 		{
@@ -211,7 +213,8 @@ int   main(void)
 			assert(strcmp(ex06_str1, ex06_str6)==1);
 			assert(strcmp(ex06_str1, ex06_str7)==0);
 			assert(strcmp(ex06_str1, ex06_str8)==104);
-			assert(strcmp(ex06_str8, ex06_str1)==-104);
+			assert(strcmp(ex06_str1, ex06_str9)==32);
+			assert(strcmp(ex06_str1, ex06_str10)==116);
 
 			assert(ft_strcmp(ex06_str1, ex06_str2)==-15);
 			assert(ft_strcmp(ex06_str1, ex06_str3)==4);
@@ -220,7 +223,8 @@ int   main(void)
 			assert(ft_strcmp(ex06_str1, ex06_str6)==1);
 			assert(ft_strcmp(ex06_str1, ex06_str7)==0);
 			assert(ft_strcmp(ex06_str1, ex06_str8)==104);
-			assert(ft_strcmp(ex06_str8, ex06_str1)==-104);
+			assert(ft_strcmp(ex06_str1, ex06_str9)==32);
+			assert(ft_strcmp(ex06_str1, ex06_str10)==116);
 		}
 
 		printf("All tests passed for ex06\n");

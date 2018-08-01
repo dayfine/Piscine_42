@@ -10,15 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		get_simple_diff(char *s1, char *s2)
-{
-	if (s1[0] == '\0' && s2[0] == '\0')
-		return (0);
-	if (s1[0] == '\0')
-		return (-s2[0]);
-	return (s1[0]);
-}
-
 int		ft_strcmp(char *s1, char *s2)
 {
 	int i;
@@ -39,7 +30,7 @@ int		ft_strcmp(char *s1, char *s2)
 			neg_diff += ((pos_diff == 0 || neg_diff == 0) ? s1[i] - s2[i] : 0);
 		i++;
 	}
-	if (i == 0)
-		return (get_simple_diff(s1, s2));
-	return (sign_tick >= 0 ? pos_diff : neg_diff);
+	if (sign_tick == 0)
+		return (s1[i] - s2[i]);
+	return (sign_tick > 0 ? pos_diff : neg_diff);
 }
