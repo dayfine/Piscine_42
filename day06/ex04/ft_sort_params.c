@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_putchar(char c);
+void	ft_putchar(char c);
 
 void	ft_putstr4(char *str)
 {
@@ -74,16 +74,17 @@ int		main(int argc, char *argv[])
 	int		i;
 	char	*program_name;
 
-	i = 1;
+	i = 0;
 	program_name = argv[0];
 	ft_sort_strings(argv, argc);
 	while (i < argc)
 	{
 		if (ft_strcmp_helper(argv[i], program_name) != 0)
 		{
-			ft_putstr4(argv[i++]);
+			ft_putstr4(argv[i]);
 			ft_putchar('\n');
 		}
+		i++;
 	}
 	return (0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_putchar(char c);
+void	ft_putchar(char c);
 
 void	ft_putstr1(char *str)
 {
@@ -26,7 +26,9 @@ void	ft_putstr1(char *str)
 int		main(int argc, char *argv[])
 {
 	if (argc > 0)
+	{
 		ft_putstr1(argv[0]);
 		ft_putchar('\n');
+	}
 	return (0);
 }
