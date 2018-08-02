@@ -21,9 +21,7 @@ int		includes(char *str, char letter)
 	while (str[i] != '\0')
 	{
 		if (str[i++] == letter)
-		{
 			return (1);
-		}
 	}
 	return (0);
 }
@@ -36,9 +34,7 @@ int		get_word_count(char *str, char *breaks)
 	i = 0;
 	wc = 0;
 	if (str[0] == '\0')
-	{
 		return (0);
-	}
 	while (str[i + 1] != '\0')
 	{
 		if (i == 0 && !includes(breaks, str[i]))

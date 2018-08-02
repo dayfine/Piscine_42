@@ -10,19 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <limits.h>
-
-int		ft_strlen(char *str)
-{
-	int idx;
-
-	idx = 0;
-	while (str[idx] != '\0')
-	{
-		idx++;
-	}
-	return (idx);
-}
 
 int		get_char_idx(char c, char *base)
 {
@@ -32,15 +21,13 @@ int		get_char_idx(char c, char *base)
 	while (base[i] != '\0')
 	{
 		if (base[i] == c)
-		{
 			return (i);
-		}
 		i++;
 	}
 	return (-1);
 }
 
-int	parse_int(char *nbr, char *base_from)
+int		parse_int(char *nbr, char *base_from)
 {
 	int sign;
 	int i;
@@ -51,7 +38,9 @@ int	parse_int(char *nbr, char *base_from)
 	i = 0;
 	num = 0;
 	sign = 1;
-	radix = ft_strlen(base_from);
+	radix = 0;
+	while (base_from[radix] != '\0')
+		radix++;
 	if (nbr[0] == '-' || nbr[0] == '+')
 		sign = 1 - 2 * (nbr[i++] == '-');
 	while (nbr[i] != '\0')
@@ -67,44 +56,49 @@ int	parse_int(char *nbr, char *base_from)
 	return (num * sign);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+char	*convert_output_helper(char *digits, int len, int is_neg)
+{
+	char	*dest;
+	int		i;
+
+	dest = malloc(sizeof(char) * (len + 1));
+	i = is_neg;
+	while (i < len)
+	{
+		dest[i] = digits[len - 1 - i];
+		i++;
+	}
+	if (is_neg)
+		dest[0] = '-';
+	dest[len] = '\0';
+	return (dest);
+}
+
+char	*ft_convert_to_base(int nbr, char *base)
 {
 	int				radix;
 	int				i;
 	unsigned int	abs_n;
-	char			digits[50];
+	char			digits[35];
+	int				is_neg;
 
-	radix = ft_strlen(base);
-	if (radix == 0)
-		return ;
-	i = 0;
+	radix = 0;
+	while (base[radix] != '\0')
+		radix++;
 	if (nbr == 0)
-	{
-		ft_putchar(base[0]);
-		return ;
-	}
-	if (nbr < 0)
-		ft_putchar('-');
+		return ("0");
+	is_neg = nbr < 0;
 	abs_n = nbr < 0 ? -((unsigned int)(nbr)) : (unsigned int)(nbr);
+	i = 0;
 	while (abs_n >= 1)
 	{
 		digits[i++] = base[abs_n % radix];
 		abs_n = abs_n / radix;
 	}
-	while (i > 0)
-		ft_putchar(digits[--i]);
-	ft_putchar('\n');
+	return (convert_output_helper(digits, i + is_neg, is_neg));
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int number;
-	int curr_num;
-	int i;
-	int	radix1;
-	int	radix2;
-	int char_idx;
-
-	printf("\n%d --", parse_int(nbr, base_from));
-	ft_putnbr_base(parse_int(nbr, base_from), base_to);
+	return (ft_convert_to_base(parse_int(nbr, base_from), base_to));
 }
