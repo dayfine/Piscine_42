@@ -29,7 +29,7 @@ char	*ft_strcpy_helper(char *dest, char *src)
 char	*ft_strdup(char *src)
 {
 	char *dest;
-	dest = malloc(sizeof(src) + 1);
+	dest = malloc(sizeof(char) * (sizeof(src) + 1));
 
 	ft_strcpy_helper(dest, src);
 	return dest;

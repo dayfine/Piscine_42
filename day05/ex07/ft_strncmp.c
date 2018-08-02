@@ -6,10 +6,11 @@
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 14:02:57 by dfan              #+#    #+#             */
-/*   Updated: 2018/07/30 14:03:29 by dfan             ###   ########.fr       */
+/*   Updated: 2018/08/01 14:03:14 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/* This is wrong but I am not fixing it right now. See ex06 for correct impl */
 int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
