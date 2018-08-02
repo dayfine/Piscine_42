@@ -35,10 +35,10 @@ int		get_word_count(char *str, char *breaks)
 
 	i = 0;
 	wc = 0;
-	if (str[0] == '\0') {
+	if (str[0] == '\0')
+	{
 		return (0);
 	}
-
 	while (str[i + 1] != '\0')
 	{
 		if (i == 0 && !includes(breaks, str[i]))
@@ -54,41 +54,36 @@ int		get_word_count(char *str, char *breaks)
 	return (wc);
 }
 
-char	**ft_split(char *str, char *breaks, int word_count)
+char	**ft_split(char *str, char *breaks)
 {
-	int i;
-	int j;
-	int k;
-	int word_len;
-	char **dest;
-	char null[1];
+	int		i;
+	int		j;
+	int		k;
+	int		word_len;
+	char	**dest;
 
-	dest = malloc(sizeof(char*) * (word_count + 1));
+	dest = malloc(sizeof(char*) * (get_word_count(str, breaks) + 1));
 	i = 0;
 	k = 0;
 	while (str[i] != '\0')
 	{
-		while (includes(breaks, str[i++])) ;
+		while (includes(breaks, str[i++]))
+			;
 		word_len = 0;
 		i -= i != 0;
-		printf("%d\n", i);
 		while (str[i + word_len] && !includes(breaks, str[i + word_len]))
 			word_len++;
 		j = 0;
 		dest[k] = malloc((word_len + 1) * sizeof(char));
 		while (j < word_len)
 			dest[k][j++] = str[i++];
-		dest[k][j] = '\0';
-		k++;
+		dest[k++][j] = '\0';
 	}
-	dest[k] = null;
+	dest[k] = 0;
 	return (dest);
 }
 
 char	**ft_split_whitespaces(char *str)
 {
-	int word_count;
-
-	word_count = get_word_count(str, " \t\n");
-	return (ft_split(str, " \t\n", word_count));
+	return (ft_split(str, " \t\n"));
 }

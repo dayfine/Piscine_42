@@ -32,7 +32,7 @@ char	*ft_concat_params(int argc, char **argv)
 	int		k;
 	char	*dest;
 
-	i = 0;
+	i = 1;
 	char_counts = 0;
 	while (i < argc)
 	{
@@ -40,7 +40,7 @@ char	*ft_concat_params(int argc, char **argv)
 		char_counts += (i++ != argc - 1);
 	}
 	dest = malloc(sizeof(char) * (char_counts + 1));
-	i = 0;
+	i = 1;
 	k = 0;
 	while (i < argc)
 	{

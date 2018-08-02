@@ -16,17 +16,21 @@ int		ft_ultimate_range(int **range, int min, int max)
 {
 	int *dest;
 	int i;
-	int len;
+	int count;
 
 	if (min >= max)
+	{
+		*range = NULL;
 		return (0);
-	len = max - min + 1;
-	dest = malloc(sizeof(int) * len);
+	}
+	count = max - min;
+	dest = malloc(sizeof(int) * count);
 	i = 0;
-	while (i < len) {
+	while (i < count + 1)
+	{
 		dest[i] = min + i;
 		i++;
 	}
 	*range = dest;
-	return len;
+	return (count);
 }

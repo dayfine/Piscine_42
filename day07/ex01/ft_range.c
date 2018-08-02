@@ -22,14 +22,13 @@ int		*ft_range(int min, int max)
 	{
 		return (0);
 	}
-
 	len = max - min + 1;
 	dest = malloc(sizeof(int) * len);
 	i = 0;
-	while (i < len) {
+	while (i < len)
+	{
 		dest[i] = min + i;
 		i++;
 	}
-
-	return dest;
+	return (dest);
 }
