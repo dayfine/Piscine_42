@@ -26,7 +26,7 @@ int		ft_ultimate_range(int **range, int min, int max)
 	count = max - min;
 	dest = malloc(sizeof(int) * count);
 	i = 0;
-	while (i < count + 1)
+	while (i < count)
 	{
 		dest[i] = min + i;
 		i++;

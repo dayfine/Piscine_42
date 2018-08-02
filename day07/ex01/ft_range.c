@@ -22,7 +22,7 @@ int		*ft_range(int min, int max)
 	{
 		return (0);
 	}
-	len = max - min + 1;
+	len = max - min;
 	dest = malloc(sizeof(int) * len);
 	i = 0;
 	while (i < len)
