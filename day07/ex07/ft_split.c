@@ -53,10 +53,19 @@ int		get_word_count(char *str, char *breaks)
 	return (wc);
 }
 
+void	build_word_helper(char *dest, int word_len, int idx, char *src)
+{
+	int j;
+
+	j = 0;
+	while (j < word_len)
+		dest[j++] = src[idx++];
+	dest[j] = '\0';
+}
+
 char	**ft_split(char *str, char *breaks)
 {
 	int		i;
-	int		j;
 	int		k;
 	int		word_len;
 	char	**dest;
@@ -72,12 +81,14 @@ char	**ft_split(char *str, char *breaks)
 		i -= i != 0;
 		while (str[i + word_len] && !includes(breaks, str[i + word_len]))
 			word_len++;
-		j = 0;
-		dest[k] = malloc((word_len + 1) * sizeof(char));
-		while (j < word_len)
-			dest[k][j++] = str[i++];
-		dest[k++][j] = '\0';
+		if (word_len)
+		{
+			dest[k] = malloc((word_len + 1) * sizeof(char));
+			build_word_helper(dest[k++], word_len, i, str);
+			i += word_len;
+		}
+		else
+			dest[k] = 0;
 	}
-	dest[k] = 0;
 	return (dest);
 }
