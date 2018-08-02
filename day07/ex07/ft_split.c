@@ -45,54 +45,38 @@ int		get_word_count(char *str, char *breaks)
 	return (wc);
 }
 
-int		get_word_len(char *str, char *breaks)
+int		get_word_len(char *str_ptr, char *breaks)
 {
 	int i;
 
 	i = 0;
-	while (str && includes(breaks, *str))
-		str++;
-	while (str && !includes(breaks, *str++))
+	while (*str_ptr && includes(breaks, *str_ptr))
+		str_ptr++;
+	while (str_ptr[i] && !includes(breaks, str_ptr[i]))
 		i++;
 	return (i);
-}
-
-void	build_word_helper(char *dest, int word_len, int idx, char *src)
-{
-	int j;
-
-	j = 0;
-	while (j < word_len)
-		dest[j++] = src[idx++];
-	dest[j] = '\0';
 }
 
 char	**ft_split(char *str, char *breaks)
 {
 	int		i;
 	int		k;
-	int		word_len;
+	int		word_count;
 	char	**dest;
 
-	dest = (char**)malloc(sizeof(char*) * (get_word_count(str, breaks) + 1));
-	i = 0;
+	word_count = get_word_count(str, breaks);
+	dest = (char**)malloc(sizeof(char*) * (word_count + 1));
 	k = 0;
-	while (str[i] != '\0')
+	while (k < word_count)
 	{
-		while (includes(breaks, *str++))
-			;
-		word_len = 0;
-		i -= i != 0;
-		while (str[i + word_len] && !includes(breaks, str[i + word_len]))
-			word_len++;
-		if (word_len)
-		{
-			dest[k] = (char*)malloc((word_len + 1) * sizeof(char));
-			build_word_helper(dest[k++], word_len, i, str);
-			i += word_len;
-		}
-		else
-			dest[k] = 0;
+		dest[k] = (char*)malloc((get_word_len(str, breaks) + 1) * sizeof(char));
+		while (*str && includes(breaks, *str))
+			str++;
+		i = 0;
+		while (*str && !includes(breaks, *str))
+			dest[k][i++] = *str++;
+		dest[k++][i] = '\0';
 	}
+	dest[k] = 0;
 	return (dest);
 }

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 int		includes(char *str, char letter)
 {
@@ -46,14 +45,14 @@ int		get_word_count(char *str, char *breaks)
 	return (wc);
 }
 
-int		get_word_len(char **str_ptr, char *breaks)
+int		get_word_len(char *str_ptr, char *breaks)
 {
 	int i;
 
 	i = 0;
-	while (**str_ptr && includes(breaks, **str_ptr))
-		(*str_ptr)++;
-	while (*(*str_ptr + i) && !includes(breaks, *(*str_ptr + i)))
+	while (*str_ptr && includes(breaks, *str_ptr))
+		str_ptr++;
+	while (str_ptr[i] && !includes(breaks, str_ptr[i]))
 		i++;
 	return (i);
 }
@@ -62,25 +61,23 @@ char	**ft_split(char *str, char *breaks)
 {
 	int		i;
 	int		k;
-	int		word_len;
+	int		word_count;
 	char	**dest;
 
-	dest = (char**)malloc(sizeof(char*) * (get_word_count(str, breaks) + 1));
+	word_count = get_word_count(str, breaks);
+	dest = (char**)malloc(sizeof(char*) * (word_count + 1));
 	k = 0;
-	while (k < get_word_count(str, breaks))
+	while (k < word_count)
 	{
-		word_len = get_word_len(&str, breaks);
-		if (word_len)
-		{
-			dest[k] = (char*)malloc((word_len + 1) * sizeof(char));
-			i = 0;
-			while (i < word_len)
-				dest[k][i++] = *str++;
-			dest[k++][i] = '\0';
-		}
-		else
-			dest[k] = 0;
+		dest[k] = (char*)malloc((get_word_len(str, breaks) + 1) * sizeof(char));
+		while (*str && includes(breaks, *str))
+			str++;
+		i = 0;
+		while (*str && !includes(breaks, *str))
+			dest[k][i++] = *str++;
+		dest[k++][i] = '\0';
 	}
+	dest[k] = 0;
 	return (dest);
 }
 
