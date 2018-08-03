@@ -26,11 +26,21 @@ char	*ft_strcpy_helper(char *dest, char *src)
 	return (dest);
 }
 
+int		ft_strlen_helper(char *str)
+{
+	int idx;
+
+	idx = 0;
+	while (str[idx] != '\0')
+		idx++;
+	return (idx);
+}
+
 char	*ft_strdup(char *src)
 {
 	char *dest;
 
-	dest = malloc(sizeof(char) * (sizeof(src) + 1));
+	dest = malloc(sizeof(char) * (ft_strlen_helper(src) + 1));
 	ft_strcpy_helper(dest, src);
 	return (dest);
 }
