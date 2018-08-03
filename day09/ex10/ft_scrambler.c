@@ -12,4 +12,11 @@
 
 void	ft_scrambler(int ***a, int *b, int *******c, int ****d)
 {
+	int temp;
+
+	temp = ***a;
+	***a = *b;
+	*b = ****d;
+	****d = *******c;
+	*******c = temp;
 }

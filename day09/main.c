@@ -8,10 +8,10 @@
 #include "./ex04/ft_rot42.c"
 #include "./ex05/ft_antidote.c"
 #include "./ex06/ft_destroy.c"
-// #include "./ex07/ft_collatz_conjecture.c"
-// #include "./ex08/ft_spy.c"
-// #include "./ex10/ft_scrambler.c"
-// #include "./ex12/ft_door.c"
+#include "./ex07/ft_collatz_conjecture.c"
+#include "./ex08/ft_spy.c"
+#include "./ex10/ft_scrambler.c"
+#include "./ex12/ft_door.c"
 // #include "./ex13/ft_compact.c"
 
 
@@ -108,6 +108,77 @@ int main(void)
 		ft_destroy(list);
 
 		printf("Tests passed\n");
+	}
+
+	printf("======== EX 10 ========\n");
+	{
+		printf("Testing ft_scrambler\n");
+
+		int ONE = 1;
+		int TWO = 2;
+		int THREE = 3;
+		int FOUR = 4;
+
+		int ***a;
+		int *b;
+		int *******c;
+		int ****d;
+
+		int *a1;
+		int **a2;
+
+		int *c1;
+		int **c2;
+		int ***c3;
+		int ****c4;
+		int *****c5;
+		int ******c6;
+
+		int *d1;
+		int **d2;
+		int ***d3;
+
+		a1 = &ONE;
+		a2 = &a1;
+		a = &a2;
+
+		b = &TWO;
+
+		c1 = &THREE;
+		c2 = &c1;
+		c3 = &c2;
+		c4 = &c3;
+		c5 = &c4;
+		c6 = &c5;
+		c = &c6;
+
+		d1 = &FOUR;
+		d2 = &d1;
+		d3 = &d2;
+		d = &d3;
+
+		ft_scrambler(a, b, c, d);
+
+		assert(***a == 2);
+		assert(*b == 4);
+		assert(*******c == 1);
+		assert(****d == 3);
+
+		printf("Tests passed\n");
+	}
+
+	printf("======== EX 12 ========\n");
+	{
+		printf("Testing ft_door\n");
+		t_door door;
+
+		open_door(&door);
+		if (is_door_close(&door))
+			open_door(&door);
+		if (is_door_open(&door))
+			close_door(&door);
+		if (door.state == OPEN)
+			close_door(&door);
 	}
 
 	return 0;

@@ -43,7 +43,6 @@ char	*trim_string(char *str)
 	return (str);
 }
 
-
 int		ft_strcmp_helper(char *s1, char *s2)
 {
 	int i;
@@ -62,7 +61,7 @@ int		ft_strcmp_helper(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int 	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int		i;
 	char	*arg;
