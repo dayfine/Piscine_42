@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 
-void ft_takes_place(int hour)
+void	ft_takes_place(int hour)
 {
 	int		next;
 	char	h_ap;

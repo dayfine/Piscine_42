@@ -10,6 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- int ft_compact(char **tab, int length)
+int		ft_compact(char **tab, int length)
 {
 }

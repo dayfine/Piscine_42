@@ -10,6 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int ft_collatz_conjecture(unsigned int base)
+unsigned int	ft_collatz_conjecture(unsigned int base)
 {
 }

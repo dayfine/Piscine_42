@@ -3,7 +3,7 @@
 
 #include "./ex00/ft_generic.c"
 #include "./ex01/ft_takes_place.c"
-// #include "./ex04/ft_rot42.c"
+#include "./ex04/ft_rot42.c"
 // #include "./ex05/ft_antidote.c"
 // #include "./ex06/ft_destroy.c"
 // #include "./ex07/ft_collatz_conjecture.c"
@@ -39,8 +39,14 @@ int main(void)
 		br();
 	}
 
-	printf("======== EX 02 ========\n");
+	printf("======== EX 04 ========\n");
 	{
+		printf("Testing rot16\n");
+
+		char rot16_input[] = "thjJIOJTA)#@)_) (!434254onUBAIBRubaibr";
+  		assert(strcmp(ft_rot42(rot16_input), "jxzZYEZJQ)#@)_) (!434254edKRQYRHkrqyrh")==0);
+
+		printf("Tests passed\n");
 	}
 
 	return 0;

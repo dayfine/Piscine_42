@@ -10,6 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
- char *ft_rot42(char *str)
+char	*ft_rot42(char *str)
 {
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if ((str[i] <= 'z' && str[i] >= 'k')
+			|| (str[i] <= 'Z' && str[i] >= 'K'))
+			str[i] -= 10;
+		else if ((str[i] <= 'j' && str[i] >= 'a')
+			|| (str[i] <= 'J' && str[i] >= 'A'))
+			str[i] += 16;
+		i++;
+	}
+	return (str);
 }
