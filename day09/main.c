@@ -94,5 +94,21 @@ int main(void)
 		printf("Tests passed\n");
 	}
 
+	printf("======== EX 07 ========\n");
+	{
+		printf("Testing ft_collatz_conjecture\n");
+
+  		assert(ft_collatz_conjecture(1)==0);
+		assert(ft_collatz_conjecture(2)==1);
+		assert(ft_collatz_conjecture(9)==19);
+		assert(ft_collatz_conjecture(97)==118);
+		assert(ft_collatz_conjecture(871)==178);
+		assert(ft_collatz_conjecture(6171)==261);
+
+		ft_destroy(list);
+
+		printf("Tests passed\n");
+	}
+
 	return 0;
 }
