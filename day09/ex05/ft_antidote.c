@@ -12,4 +12,16 @@
 
 int		ft_antidote(int i, int j, int k)
 {
+	if (i >= j)
+	{
+		if (j >= k)
+			return k;
+		return i >= k ? k : i;
+	}
+	else
+	{
+		if (i >= k)
+			return i;
+		return j >= k ? k : j;
+	}
 }
