@@ -1,7 +1,5 @@
-#include <stdlib.h>
-
-#include "ft_sudoku_types.h"
 #include "ft_print_utils.h"
+#include "ft_sudoku_board.h"
 
 void	display_error(void)
 {
@@ -9,34 +7,19 @@ void	display_error(void)
 }
 
 
-
-
 int		main(int argc, char **argv)
 {
-	int 	i;
-	int		j;
-	t_board	*board;
+
+	t_board *board;
 
 	if (argc != 10)
 	{
 		display_error();
-		return (1)
+		return (1);
 	}
-	board = malloc(t_board);
-	i = 1;
-	while (argv[i])
-	{
-		j = 0
-		while (j < SIZE)
-		{
-			if (!argv[i][j])
-			{
-				display_error();
-				return (1);
-			}
-			board->matrix[i][j] = argv[i][j];
-			board->num_cells_free += argv[i][j] == '.';
-		}
-	}
+	argv++;
+	board = create_board(argv);
+	print_board(board);
+	destory_board(board)
 	return (0);
 }
