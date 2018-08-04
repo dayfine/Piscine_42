@@ -15,11 +15,10 @@
 #include "ft_sudoku_board.h"
 #include "ft_print_utils.h"
 
+#define SIZE 9
+#define NUM_CELLS SIZE * SIZE
 
-# define SIZE 9
-# define NUM_CELLS SIZE * SIZE
-
-t_point		*create_point(int x, int y)
+t_point			*create_point(int x, int y)
 {
 	t_point	*point;
 
@@ -51,18 +50,6 @@ t_board			*create_board(char **rows)
 		i++;
 	}
 	return (board);
-}
-
-void			destory_board(t_board *board)
-{
-	int i;
-
-	i = 0;
-	while (i < SIZE)
-		free(board->matrix[i++]);
-	free(board->matrix);
-	free(board->available_moves);
-	free(board);
 }
 
 void			print_board(t_board *board)

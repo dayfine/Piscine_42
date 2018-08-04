@@ -9,16 +9,15 @@
 /*   Updated: 2018/08/04 09:34:33 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stdio.h>
 
 #include "ft_print_utils.h"
 #include "ft_sudoku_board.h"
 #include "ft_sudoku_backtracking.h"
 
-
 int		main(int argc, char **argv)
 {
-
 	t_board *board;
 
 	if (argc != 10)
@@ -35,6 +34,5 @@ int		main(int argc, char **argv)
 	printf("---> backtracked\n");
 	printf("====> Result <====\n");
 	print_board(board);
-	// destory_board(board);
 	return (0);
 }

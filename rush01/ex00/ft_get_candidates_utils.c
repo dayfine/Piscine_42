@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_candidates_utils.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/04 14:37:31 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/04 14:37:33 by dfan             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "ft_sudoku_board.h"
@@ -6,7 +18,7 @@ typedef struct s_point	t_point;
 
 typedef struct s_board	t_board;
 
-int *make_possible_arr(void)
+int		*make_possible_arr(void)
 {
 	int i;
 	int *possibles;
@@ -18,7 +30,7 @@ int *make_possible_arr(void)
 	return (possibles);
 }
 
-int	*get_possibles(int x, int y, t_board *board)
+int		*get_possibles(int x, int y, t_board *board)
 {
 	int i;
 	int j;

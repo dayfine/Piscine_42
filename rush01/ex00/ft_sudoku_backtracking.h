@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_sudoku_board.h"
-
 #ifndef FT_SUDOKU_BACKTRACKING_H
 # define FT_SUDOKU_BACKTRACKING_H
+# include "ft_sudoku_board.h"
 
 int		*possibles(int x, int y, t_board *board);
 

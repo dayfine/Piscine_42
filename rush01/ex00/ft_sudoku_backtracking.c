@@ -20,7 +20,6 @@ typedef struct s_point	t_point;
 
 typedef struct s_board	t_board;
 
-
 void	make_move(int x, int y, char to_fill, t_board *board)
 {
 	fill_cell(x, y, to_fill, board);
@@ -70,13 +69,12 @@ int		backtrack(t_board *board)
 				best = get_possibles(i, j, board);
 				best_point = create_point(i, j);
 				if (best_len == 1)
-					break;
+					break ;
 			}
 			j++;
 		}
 		i++;
 	}
-
 	if (board->num_cells_free == 0)
 		return (1);
 	if (!best)
