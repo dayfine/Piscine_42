@@ -1,10 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/04 09:34:26 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/04 09:34:33 by dfan             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_print_utils.h"
 #include "ft_sudoku_board.h"
-
-void	display_error(void)
-{
-	ft_putstr("Error\n");
-}
 
 
 int		main(int argc, char **argv)
@@ -20,6 +27,6 @@ int		main(int argc, char **argv)
 	argv++;
 	board = create_board(argv);
 	print_board(board);
-	destory_board(board)
+	destory_board(board);
 	return (0);
 }

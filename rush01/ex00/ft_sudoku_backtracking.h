@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_utils.c                                   :+:      :+:    :+:   */
+/*   ft_sudoku_backtracking.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/04 09:33:13 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/04 09:33:51 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/04 09:34:12 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/04 09:34:14 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_SUDOKU_BACKTRACKING_H
+# define FT_SUDOKU_BACKTRACKING_H
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+int		*possibles(int x, int y, t_board *board);
 
-void	ft_putstr(char *str)
-{
-	int idx;
+char	possible_value(int n);
 
-	idx = 0;
-	while (str[idx] != '\0')
-	{
-		ft_putchar(str[idx++]);
-	}
-}
+void	make_move(char c);
 
-void	display_error(void)
-{
-	ft_putstr("Error\n");
-}
+void	unmake_move(char *str);
+
+int		backtrack(t_board *board);
+
+#endif

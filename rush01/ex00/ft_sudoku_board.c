@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sudoku_board.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/04 09:34:18 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/04 09:34:19 by dfan             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 #include "ft_print_utils.h"
 
-# define SIZE 9
-# define NUM_CELLS SIZE * SIZE
+#define SIZE 9
+#define NUM_CELLS SIZE * SIZE
 
 typedef struct	s_point
 {
@@ -15,14 +27,15 @@ typedef struct	s_board
 {
 	char	matrix[SIZE + 1][SIZE + 1];
 	int		num_cells_free;
-	t_point	available_moves[NUM_CELLS +1];
+	t_point	available_moves[NUM_CELLS + 1];
 }				t_board;
 
-t_board		*create_board(char **rows)
+t_board			*create_board(char **rows)
 {
-	int 	i;
+	int		i;
 	int		j;
 	t_board	*board;
+
 	board = malloc(sizeof(t_board));
 	i = 0;
 	while (rows[i])
@@ -40,7 +53,7 @@ t_board		*create_board(char **rows)
 	return (board);
 }
 
-void		destory_board(t_board *board)
+void			destory_board(t_board *board)
 {
 	int i;
 
@@ -48,12 +61,11 @@ void		destory_board(t_board *board)
 	while (i < SIZE)
 		free(board->matrix[i++]);
 	free(board->matrix);
-
 	free(board->available_moves);
 	free(board);
 }
 
-void 		print_board(t_board *board)
+void			print_board(t_board *board)
 {
 	int i;
 
@@ -63,4 +75,16 @@ void 		print_board(t_board *board)
 		ft_putstr(board->matrix[i++]);
 		ft_putchar('\n');
 	}
+}
+
+void			fill_cell(int x, int y, char to_fill, t_board *board)
+{
+	board->matrix[x][y] = to_fill;
+	board->num_cells_free -= 1;
+}
+
+void			free_cell(int x, int y, t_board *board)
+{
+	board->matrix[x][y] = '.';
+	board->num_cells_free += 1;
 }
