@@ -37,6 +37,7 @@ t_board			*create_board(char **rows)
 
 	board = malloc(sizeof(t_board));
 	i = 0;
+	board->num_cells_free = 0;
 	while (rows[i])
 	{
 		j = 0;
@@ -70,10 +71,7 @@ void			print_board(t_board *board)
 
 	i = 0;
 	while (i < SIZE)
-	{
-		ft_putstr(board->matrix[i++]);
-		ft_putchar('\n');
-	}
+		ft_print_sudoku_line(board->matrix[i++]);
 }
 
 void			fill_cell(int x, int y, char to_fill, t_board *board)

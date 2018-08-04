@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "ft_sudoku_board.h"
 #include "ft_get_candidates_utils.h"
@@ -41,16 +42,17 @@ int		backtrack(t_board *board)
 	int		j;
 	int		*possibles;
 	int		best_len;
+	int		count;
 	int		*best;
 	t_point	*best_point;
 
-	printf("======working========\n");
-
 	i = 0;
-	j = 0;
-	best_len = 9;
+	best = NULL;
+	best_point = NULL;
+	best_len = 10;
 	while (i < SIZE)
 	{
+		j = 0;
 		while (j < SIZE)
 		{
 			if (board->matrix[i][j] != '.')
@@ -59,10 +61,13 @@ int		backtrack(t_board *board)
 				continue;
 			}
 			possibles = get_possibles(i, j, board);
-			if (get_possible_count(possibles) < best_len)
+			count = get_possible_count(possibles);
+			if (count == 0)
+				return (0);
+			if (count < best_len)
 			{
-				best_len = get_possible_count(possibles);
-				best = possibles;
+				best_len = count;
+				best = get_possibles(i, j, board);
 				best_point = create_point(i, j);
 				if (best_len == 1)
 					break;
@@ -72,21 +77,22 @@ int		backtrack(t_board *board)
 		i++;
 	}
 
-	if (best_len == 0 && board->num_cells_free == 0)
+	if (board->num_cells_free == 0)
 		return (1);
+	if (!best)
+		return (0);
 	i = 0;
 	while (i < SIZE)
 	{
-		if (!best[i])
+		if (best[i] > 0)
 		{
-			i++;
-			continue;
+			make_move(best_point->x, best_point->y, get_value(i), board);
+			if (backtrack(board))
+				return (1);
+			unmake_move(best_point->x, best_point->y, board);
 		}
-		make_move(best_point->x, best_point->y, get_value(best[i]), board);
-		if (backtrack(board))
-			return (1);
-		unmake_move(best_point->x, best_point->y, board);
 		i++;
 	}
+	free(best_point);
 	return (0);
 }

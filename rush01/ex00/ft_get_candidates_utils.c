@@ -1,10 +1,10 @@
 #include <stdlib.h>
-# include "ft_sudoku_board.h"
+#include <stdio.h>
+#include "ft_sudoku_board.h"
 
 typedef struct s_point	t_point;
 
 typedef struct s_board	t_board;
-
 
 int *make_possible_arr(void)
 {
@@ -34,11 +34,11 @@ int	*get_possibles(int x, int y, t_board *board)
 			possibles[board->matrix[x][i] - '1'] &= 0;
 		i++;
 	}
-	i = x / 3;
-	j = y / 3;
-	while (i < x / 3 + 3)
+	i = x / 3 * 3;
+	j = y / 3 * 3;
+	while (i < (x / 3 * 3 + 3))
 	{
-		while (j < y / 3 + 3)
+		while (j < (y / 3 * 3 + 3))
 		{
 			if (board->matrix[i][j] != '.')
 				possibles[board->matrix[i][j] - '1'] &= 0;

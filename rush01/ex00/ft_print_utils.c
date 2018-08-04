@@ -23,9 +23,20 @@ void	ft_putstr(char *str)
 
 	idx = 0;
 	while (str[idx] != '\0')
+		ft_putchar(str[idx++]);
+}
+
+void	ft_print_sudoku_line(char *str)
+{
+	int idx;
+
+	idx = 0;
+	while (str[idx] != '\0')
 	{
 		ft_putchar(str[idx++]);
+		ft_putchar(' ');
 	}
+	ft_putchar('\n');
 }
 
 void	display_error(void)

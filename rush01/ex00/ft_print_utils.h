@@ -17,6 +17,8 @@ void	ft_putchar(char c);
 
 void	ft_putstr(char *str);
 
+void	ft_print_sudoku_line(char *str);
+
 void	display_error(void);
 
 #endif

@@ -33,7 +33,8 @@ int		main(int argc, char **argv)
 	printf("---> printed\n");
 	backtrack(board);
 	printf("---> backtracked\n");
+	printf("====> Result <====\n");
 	print_board(board);
-	destory_board(board);
+	// destory_board(board);
 	return (0);
 }
