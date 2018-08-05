@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 #include "ft_print_utils.h"
 #include "ft_sudoku_board.h"
 #include "ft_sudoku_backtracking.h"
@@ -27,12 +25,7 @@ int		main(int argc, char **argv)
 	}
 	argv++;
 	board = create_board(argv);
-	printf("---> created\n");
-	print_board(board);
-	printf("---> printed\n");
 	backtrack(board);
-	printf("---> backtracked\n");
-	printf("====> Result <====\n");
 	print_board(board);
 	return (0);
 }

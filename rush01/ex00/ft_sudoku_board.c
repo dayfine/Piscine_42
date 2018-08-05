@@ -15,9 +15,6 @@
 #include "ft_sudoku_board.h"
 #include "ft_print_utils.h"
 
-#define SIZE 9
-#define NUM_CELLS SIZE * SIZE
-
 t_point			*create_point(int x, int y)
 {
 	t_point	*point;
