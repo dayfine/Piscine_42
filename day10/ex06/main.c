@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (argc != 4)
 		return (1);
 	if (argv[2][1])
-		return (ft_putnbr(res));
+		return (ft_putnbr(0));
 	if (ft_atoi(argv[3]) == 0 && argv[2][0] == '/')
 		return (ft_putstr("Stop : division by zero"));
 	if (ft_atoi(argv[3]) == 0 && argv[2][0] == '%')

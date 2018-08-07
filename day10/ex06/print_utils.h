@@ -13,6 +13,9 @@
 #ifndef PRINT_UTILS_H
 # define PRINT_UTILS_H
 
+# include <unistd.h>
+# include <limits.h>
+
 void	ft_putchar(char c);
 
 int		ft_putstr(char *str);
