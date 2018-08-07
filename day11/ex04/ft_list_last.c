@@ -18,8 +18,6 @@ t_list	*ft_list_last(t_list *begin_list)
 
 	curr = begin_list;
 	while (curr && curr->next)
-	{
 		curr = curr->next;
-	}
 	return (curr);
 }

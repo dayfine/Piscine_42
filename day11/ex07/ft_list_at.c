@@ -14,4 +14,12 @@
 
 t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
+	t_list			*curr;
+	unsigned int	count;
+
+	curr = begin_list;
+	count = 0;
+	while (++count < nbr && curr && curr->next)
+		curr = curr->next;
+	return (count == nbr ? curr : NULL);
 }

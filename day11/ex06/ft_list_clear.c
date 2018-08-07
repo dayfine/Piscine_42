@@ -12,6 +12,18 @@
 
 #include "ft_list.h"
 
+void	free_list_helper(t_list *head)
+{
+	if (!head)
+		return ;
+	free_list_helper(head->next);
+	free(head);
+}
+
 void	ft_list_clear(t_list **begin_list)
 {
+	if (*begin_list == NULL)
+		return ;
+	free_list_helper(*begin_list);
+	*begin_list = NULL;
 }

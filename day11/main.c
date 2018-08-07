@@ -10,9 +10,9 @@
 #include "./ex02/ft_list_push_front.c"
 #include "./ex03/ft_list_size.c"
 #include "./ex04/ft_list_last.c"
-// #include "./ex05/ft_list_push_params.c"
-// #include "./ex06/ft_list_clear.c"
-// #include "./ex07/ft_list_at.c"
+#include "./ex05/ft_list_push_params.c"
+#include "./ex06/ft_list_clear.c"
+#include "./ex07/ft_list_at.c"
 // #include "./ex08/ft_list_reverse.c"
 // #include "./ex09/ft_list_foreach.c"
 // #include "./ex10/ft_list_foreach_if.c"
@@ -118,10 +118,9 @@ int main(void)
 		{
 			list_test = create_dummy_list();
 
-			assert(ft_list_last(list_test)==4);
-
-			ft_list_push_back(&list_test, "beg");
-			assert(ft_list_size(list_test)==5);
+			assert(strcmp(ft_list_last(list_test)->data, "2")==0);
+			ft_list_push_back(&list_test, "end");
+			assert(strcmp(ft_list_last(list_test)->data, "end")==0);
 
 			free_list(list_test);
 		}
@@ -129,8 +128,68 @@ int main(void)
 		printf("\tnull list\n");
 		{
 			list_test = NULL;
-			assert(ft_list_size(list_test)==0);
+			assert(ft_list_last(list_test)==NULL);
 			free_list(list_test);
+		}
+	}
+
+	printf("====== 05 To List ========\n");
+	{
+		printf("\tnormal list\n");
+		{
+			char *args[4] = {"5", "4", "3", "2"};
+			char *expected[5] = {"2", "3", "4", "5", 0};
+			assert(test_list(ft_list_push_params(4, args), expected)==1);
+		}
+
+		printf("\tnull list\n");
+		{
+			char *args[0] = {};
+			assert(ft_list_push_params(0, args)==NULL);
+		}
+	}
+
+	printf("====== 06 Free List ========\n");
+	{
+		printf("\tnormal list\n");
+		{
+			list_test = create_dummy_list();
+
+			t_list **ptr = &list_test;
+			ft_list_clear(ptr);
+			assert(*ptr==NULL);
+		}
+
+		printf("\tnull list\n");
+		{
+			list_test = NULL;
+
+			t_list **ptr = &list_test;
+			ft_list_clear(ptr);
+			assert(*ptr==NULL);
+		}
+	}
+
+	printf("====== 07 Get List Nth ========\n");
+	{
+		printf("\tnormal get\n");
+		{
+			list_test = create_dummy_list();
+
+			assert(strcmp(ft_list_at(list_test, 1)->data, "5")==0);
+			assert(strcmp(ft_list_at(list_test, 3)->data, "3")==0);
+			free_list(list_test);
+		}
+
+		printf("\tinvalid get\n");
+		{
+			list_test = create_dummy_list();
+
+			assert(ft_list_at(list_test, 0)==NULL);
+			assert(ft_list_at(list_test, 5)==NULL);
+			free_list(list_test);
+
+			assert(ft_list_at(NULL, 0)==NULL);
 		}
 	}
 
