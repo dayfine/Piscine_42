@@ -12,4 +12,6 @@
 
 #include "ft_list.h"
 
-int		ft_list_size(t_list *begin_list);
+t_list	*ft_list_last(t_list *begin_list)
+{
+}

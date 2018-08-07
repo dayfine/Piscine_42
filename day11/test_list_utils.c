@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./ex01/ft_list.h"
+#include "./ex00/ft_list.h"
+#include "./ex00/ft_create_elem.c"
 
 void print_list(t_list *node)
 {
