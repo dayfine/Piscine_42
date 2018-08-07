@@ -23,9 +23,9 @@ $(NAME):
 	gcc *.o -o $(OUT)
 
 clean:
-	rm -f *.o
+	-@rm -f *.o
+	-@rm -f $(OUT)
 
 fclean: clean
-	rm -f $(OUT)
 
 re: fclean all
