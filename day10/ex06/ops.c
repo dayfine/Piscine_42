@@ -12,10 +12,9 @@
 
 #include "calcs.h"
 
-static long (*op_fns[6])(long, long) = { add, sub, mul, div, mol, 0 };
+static long (*g_op_fns[6])(long, long) = { add, sub, mul, div, mol, 0 };
 
-
-long do_op(long num1, char arg2, long num2)
+long	do_op(long num1, char arg2, long num2)
 {
 	int		i;
 
@@ -23,7 +22,7 @@ long do_op(long num1, char arg2, long num2)
 	while (++i < 5)
 	{
 		if (arg2 == CALCS[i])
-			return (op_fns[i](num1, num2));
+			return (g_op_fns[i](num1, num2));
 	}
 	return (0);
 }

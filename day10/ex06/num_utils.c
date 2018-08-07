@@ -20,9 +20,9 @@ int		is_white_space(char c)
 
 long	ft_atoi(char *str)
 {
-	long sign;
-	long curr_num;
-	int i;
+	long		sign;
+	long		curr_num;
+	int			i;
 
 	i = 0;
 	curr_num = 0;
