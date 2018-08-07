@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "print_utils.h"
 #include "num_utils.h"
 #include "ops.h"

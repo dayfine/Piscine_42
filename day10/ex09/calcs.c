@@ -12,27 +12,27 @@
 
 #include "calcs.h"
 
-long	add(long a, long b)
+long	ft_add(long a, long b)
 {
 	return (a + b);
 }
 
-long	sub(long a, long b)
+long	ft_sub(long a, long b)
 {
 	return (a - b);
 }
 
-long	mul(long a, long b)
+long	ft_mul(long a, long b)
 {
 	return (a * b);
 }
 
-long	div(long a, long b)
+long	ft_div(long a, long b)
 {
 	return (a / b);
 }
 
-long	mod(long a, long b)
+long	ft_mod(long a, long b)
 {
 	return (a % b);
 }

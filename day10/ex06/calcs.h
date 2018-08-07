@@ -22,6 +22,6 @@ long mul(long a, long b);
 
 long div(long a, long b);
 
-long mol(long a, long b);
+long mod(long a, long b);
 
 #endif

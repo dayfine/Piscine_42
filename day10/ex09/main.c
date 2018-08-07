@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calcs.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 19:50:44 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/06 19:52:31 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/06 19:50:18 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/06 19:50:20 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "calcs.h"
+#include <stdio.h>
 
-long	add(long a, long b)
+/* Surprise! I am not doing this lol */
+int	main(int argc, char **argv)
 {
-	return (a + b);
-}
-
-long	sub(long a, long b)
-{
-	return (a - b);
-}
-
-long	mul(long a, long b)
-{
-	return (a * b);
-}
-
-long	div(long a, long b)
-{
-	return (a / b);
-}
-
-long	mod(long a, long b)
-{
-	return (a % b);
+	return (0);
 }

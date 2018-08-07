@@ -12,7 +12,7 @@
 
 #include "calcs.h"
 
-static long (*g_op_fns[6])(long, long) = { add, sub, mul, div, mol, 0 };
+static long (*g_op_fns[6])(long, long) = { add, sub, mul, div, mod, 0 };
 
 long	do_op(long num1, char arg2, long num2)
 {

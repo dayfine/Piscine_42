@@ -10,29 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "calcs.h"
+#ifndef CALCS_H
+# define CALCS_H
 
-long	add(long a, long b)
-{
-	return (a + b);
-}
+long ft_add(long a, long b);
 
-long	sub(long a, long b)
-{
-	return (a - b);
-}
+long ft_sub(long a, long b);
 
-long	mul(long a, long b)
-{
-	return (a * b);
-}
+long ft_mul(long a, long b);
 
-long	div(long a, long b)
-{
-	return (a / b);
-}
+long ft_div(long a, long b);
 
-long	mod(long a, long b)
-{
-	return (a % b);
-}
+long ft_mol(long a, long b);
+
+#endif
