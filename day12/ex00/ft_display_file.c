@@ -12,6 +12,7 @@
 
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
 
 #define BUF_SIZE 4096
 
@@ -25,32 +26,47 @@ void	ft_putstr(char *str)
 	write(1, str, len);
 }
 
-void	ft_putline(char *str)
+void	ft_write_from_stream(int fd)
 {
-	ft_putstr(str);
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char *argv[])
-{
-	int		fd;
 	int		ret;
 	char	buf[BUF_SIZE + 1];
 
-	if (argc != 2)
-	{
-		ft_putline(argc == 1 ? "File name missing." : "Too many arguments.");
-		return (1);
-	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (1);
 	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		buf[ret] = '\0';
 		ft_putstr(buf);
 	}
+}
+
+int		ft_write_from_file(char *filename)
+{
+	int		fd;
+	int		errno;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr("cat: ");
+		ft_putstr(filename);
+		if (errno == ENOENT)
+			ft_putstr(": No such file or directory\n");
+		if (errno == EACCES)
+			ft_putstr(": Permission denied\n");
+		return (1);
+	}
+	ft_write_from_stream(fd);
 	if (close(fd) == -1)
 		return (1);
+	return (0);
+}
+
+int		main(int argc, char *argv[])
+{
+	if (argc != 2)
+	{
+		ft_putstr(argc == 1 ? "File name missing.\n" : "Too many arguments.\n");
+		return (1);
+	}
+	ft_write_from_file(argv[1]);
 	return (0);
 }
