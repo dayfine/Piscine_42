@@ -21,7 +21,6 @@ void	ft_list_reverse(t_list **begin_list)
 
 	reversed = NULL;
 	rest = *begin_list;
-
 	while (rest)
 	{
 		next = rest->next;

@@ -176,8 +176,8 @@ int main(void)
 		{
 			list_test = create_dummy_list();
 
-			assert(strcmp(ft_list_at(list_test, 1)->data, "5")==0);
-			assert(strcmp(ft_list_at(list_test, 3)->data, "3")==0);
+			assert(strcmp(ft_list_at(list_test, 0)->data, "5")==0);
+			assert(strcmp(ft_list_at(list_test, 2)->data, "3")==0);
 			free_list(list_test);
 		}
 
@@ -185,7 +185,7 @@ int main(void)
 		{
 			list_test = create_dummy_list();
 
-			assert(ft_list_at(list_test, 0)==NULL);
+			assert(ft_list_at(list_test, -1)==NULL);
 			assert(ft_list_at(list_test, 5)==NULL);
 			free_list(list_test);
 
