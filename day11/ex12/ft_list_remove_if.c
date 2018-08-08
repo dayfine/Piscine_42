@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "ft_list.h"
 
 t_list	*ft_list_remove_rec(t_list *head, void *data_ref, int (*cmp)())
