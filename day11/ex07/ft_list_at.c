@@ -19,7 +19,7 @@ t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 
 	curr = begin_list;
 	count = 0;
-	while (++count < nbr && curr && curr->next)
+	while (++count < nbr && curr)
 		curr = curr->next;
 	return (count == nbr ? curr : NULL);
 }

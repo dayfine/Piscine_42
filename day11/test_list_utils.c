@@ -51,7 +51,7 @@ t_list * create_dummy_list()
 
 void	free_list(t_list *head)
 {
-	if (!head)
+	if (head == NULL)
 		return ;
 	free_list(head->next);
 	free(head);
