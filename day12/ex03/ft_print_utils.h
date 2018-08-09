@@ -24,4 +24,3 @@ void	print_address(char *str);
 void	print_hex(char **hex_tab);
 
 #endif
-

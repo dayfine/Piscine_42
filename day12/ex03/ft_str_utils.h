@@ -10,4 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_STR_UTILS_H
+# define FT_STR_UTILS_H
 
+int		ft_strcmp(char *s1, char *s2);
+
+#endif

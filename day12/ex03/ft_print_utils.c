@@ -47,6 +47,7 @@ void	print_address(char *str)
 {
 	ft_putstr(str);
 	ft_putstr(" ");
+	free(str);
 }
 
 
