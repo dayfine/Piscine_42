@@ -11,21 +11,11 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <stdio.h>
+
+#include "ft_file_op.h"
+#include "ft_print_utils.h"
 
 #define BUF_SIZE 30
-
-void	ft_putstr(char *str)
-{
-	int len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	write(1, str, len);
-}
 
 void	ft_write_from_stream(int fd)
 {
@@ -39,39 +29,18 @@ void	ft_write_from_stream(int fd)
 	}
 }
 
-int		handle_fd_errors(char *program, char *filename)
-{
-	ft_putstr(program);
-	ft_putstr(": ");
-	ft_putstr(filename);
-	if (errno == ENOENT)
-		ft_putstr(": No such file or directory\n");
-	if (errno == EACCES)
-		ft_putstr(": Permission denied\n");
-	return (1);
-}
-
 int		ft_write_from_file(char *filename)
 {
-	int		fd;
-	int		errno;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (handle_fd_errors("cat", filename));
-	ft_write_from_stream(fd);
-	if (close(fd) == -1)
-		return (1);
-	return (0);
+	return (ft_perform_file_op("cat", filename, ft_write_from_stream));
 }
 
 int		main(int argc, char *argv[])
 {
 	int		i;
 
+	i = 0;
 	if (argc == 1)
 		ft_write_from_stream(STDIN_FILENO);
-	i = 0;
 	while (++i < argc)
 		ft_write_from_file(argv[i]);
 	return (0);

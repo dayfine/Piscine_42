@@ -8,6 +8,10 @@ ex00
 
 ex01
 ===============
+./ft_cat
+./ft_cat Makefile Makefile
+./ft_cat Makefile b Makefile
+./ft_cat Makefile b Makefile
 
 ex02
 

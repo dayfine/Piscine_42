@@ -38,7 +38,7 @@ int		main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		ft_putstr(argc == 1 ? "File name missing.\n" : "Too many arguments.\n");
+		ft_puterr(argc == 1 ? "File name missing.\n" : "Too many arguments.\n");
 		return (1);
 	}
 	ft_write_from_file(argv[1]);

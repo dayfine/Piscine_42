@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_file_op.h                                       :+:      :+:    :+:   */
+/*   ft_print_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,13 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_FILE_OP_H
-# define FT_FILE_OP_H
+#include <unistd.h>
+#include <stdlib.h>
 
-typedef void	(*t_file_op) (int fd);
+void	ft_putstr_base(char *str, int stream_no)
+{
+	int len;
 
-int		handle_fd_errors(char *program, char *filename);
+	len = 0;
+	while (str[len])
+		len++;
+	write(stream_no, str, len);
+}
 
-int		ft_perform_file_op(char *program, char *filename, t_file_op write_op);
+void	ft_putstr(char *str)
+{
+	ft_putstr_base(str, STDOUT_FILENO);
+}
 
-#endif
+void	ft_puterr(char *str)
+{
+	ft_putstr_base(str, STDERR_FILENO);
+}
