@@ -38,31 +38,60 @@ void	print_ascii(char *str)
 	ft_putstr("|\n");
 }
 
-void	print_same_line_as_above()
+void	print_same_line_as_above(void)
 {
 	ft_putstr("*\n");
 }
 
-void	print_address(char *str)
+void	print_address(long addr)
 {
+	int		i;
+	char	digits[32];
+	char	*str;
+
+	str = malloc(sizeof(char) * 9);
+	i = -1;
+	while (++i < 8)
+		str[i] = '0';
+	str[8] = '\0';
+	i = 0;
+	while (addr >= 1)
+	{
+		digits[i++] = "0123456789abcdef"[addr % 16];
+		addr = addr / 16;
+	}
+	while (--i >= 0)
+		str[7 - i] = digits[i];
 	ft_putstr(str);
 	ft_putstr(" ");
 	free(str);
 }
 
-
-void	print_hex(char **hex_tab)
+void	print_hex(char *str)
 {
-	int i;
+	int		i;
+	int		ended;
+	char	to_print;
 
 	i = -1;
+	ended = 0;
 	while (++i < 16)
 	{
-		ft_putstr(hex_tab[i]);
+		if (!str[i])
+			ended = 1;
+		if (!ended)
+		{
+			to_print = "0123456789abcdef"[str[i] / 16];
+			write(1, &to_print, 1);
+			to_print = "0123456789abcdef"[str[i] % 16];
+			write(1, &to_print, 1);
+		}
+		else
+		{
+			ft_putstr("  ");
+		}
 		ft_putstr(" ");
 		if (i == 7 || i == 15)
 			ft_putstr(" ");
-		free(hex_tab[i]);
 	}
-	free(hex_tab);
 }

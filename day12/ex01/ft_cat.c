@@ -39,6 +39,18 @@ void	ft_write_from_stream(int fd)
 	}
 }
 
+int		handle_fd_errors(char *program, char *filename)
+{
+	ft_putstr(program);
+	ft_putstr(": ");
+	ft_putstr(filename);
+	if (errno == ENOENT)
+		ft_putstr(": No such file or directory\n");
+	if (errno == EACCES)
+		ft_putstr(": Permission denied\n");
+	return (1);
+}
+
 int		ft_write_from_file(char *filename)
 {
 	int		fd;
@@ -46,15 +58,7 @@ int		ft_write_from_file(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_putstr("cat: ");
-		ft_putstr(filename);
-		if (errno == ENOENT)
-			ft_putstr(": No such file or directory\n");
-		if (errno == EACCES)
-			ft_putstr(": Permission denied\n");
-		return (1);
-	}
+		return (handle_fd_errors("cat", filename));
 	ft_write_from_stream(fd);
 	if (close(fd) == -1)
 		return (1);
@@ -66,10 +70,7 @@ int		main(int argc, char *argv[])
 	int		i;
 
 	if (argc == 1)
-	{
 		ft_write_from_stream(STDIN_FILENO);
-		return (1);
-	}
 	i = 0;
 	while (++i < argc)
 		ft_write_from_file(argv[i]);

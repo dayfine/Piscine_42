@@ -19,8 +19,8 @@ void	print_ascii(char *str);
 
 void	print_same_line_as_above();
 
-void	print_address(char *str);
+void	print_address(long addr);
 
-void	print_hex(char **hex_tab);
+void	print_hex(char *str);
 
 #endif
