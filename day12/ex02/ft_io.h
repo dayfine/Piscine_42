@@ -15,7 +15,7 @@
 
 void	ft_write_from_stream(int fd);
 
-int		ft_write_from_file_w_offset(char *filename, long offset,
-									int print_header);
+int		ft_write_from_file_w_offset(char *filename, long offset, \
+									int print_header, int is_first);
 
 #endif

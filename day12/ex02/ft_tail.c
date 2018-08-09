@@ -28,6 +28,6 @@ int		main(int argc, char *argv[])
 	offset = ft_atoi_neg_offset(argv[2]);
 	i = 2;
 	while (++i < argc)
-		ft_write_from_file_w_offset(argv[i], offset, argc > 4);
+		ft_write_from_file_w_offset(argv[i], offset, argc > 4, i == 3);
 	return (0);
 }

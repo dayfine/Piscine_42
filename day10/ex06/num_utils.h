@@ -13,6 +13,6 @@
 #ifndef NUM_UTILS_H
 # define NUM_UTILS_H
 
-int		ft_atoi(char *str);
+long		ft_atoi(char *str);
 
 #endif

@@ -46,13 +46,15 @@ long	get_file_size(char *filename)
 	return (len);
 }
 
-void	ft_write_from_stream_from_target(int fd, long target, \
+void	ft_write_from_stream_from_target(int fd, long offset,
 										int print_header, char *filename)
 {
 	long	ret;
 	long	loc;
+	long	target;
 	char	buf[BUF_SIZE + 1];
 
+	target = offset > 0 ? offset - 1 : get_file_size(filename) + offset;
 	loc = 0;
 	while (loc < target - BUF_SIZE)
 		loc += read(fd, buf, BUF_SIZE);
@@ -71,11 +73,10 @@ void	ft_write_from_stream_from_target(int fd, long target, \
 }
 
 int		ft_write_from_file_w_offset(char *filename, long offset, \
-									int print_header)
+									int print_header, int is_first)
 {
 	int		fd;
 	int		errno;
-	long	target;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -88,8 +89,9 @@ int		ft_write_from_file_w_offset(char *filename, long offset, \
 			ft_putstr(": Permission denied\n");
 		return (1);
 	}
-	target = offset > 0 ? offset - 1 : get_file_size(filename) + offset;
-	ft_write_from_stream_from_target(fd, target, print_header, filename);
+	if (print_header && !is_first)
+		ft_putstr("\n");
+	ft_write_from_stream_from_target(fd, offset, print_header, filename);
 	if (close(fd) == -1)
 		return (1);
 	return (0);
