@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tail.c                                          :+:      :+:    :+:   */
+/*   ft_io.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 14:51:54 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/08 14:51:55 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/08 20:27:34 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/08 20:27:36 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_IO_H
+# define FT_IO_H
 
-#include "ft_utils.h"
-#include "ft_io.h"
+void	ft_write_from_stream(int fd);
 
-int		main(int argc, char *argv[])
-{
-	int		i;
-	long	offset;
+int		ft_write_from_file_w_offset(char *filename, long offset,
+									int print_header);
 
-	if (argc < 4)
-	{
-		ft_write_from_stream(STDIN_FILENO);
-		return (1);
-	}
-	offset = ft_atoi_neg_offset(argv[2]);
-	i = 2;
-	while (++i < argc)
-		ft_write_from_file_w_offset(argv[i], offset, argc > 4);
-	return (0);
-}
+#endif
