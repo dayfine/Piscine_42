@@ -1,46 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_file.c                                  :+:      :+:    :+:   */
+/*   ft_file_op.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 14:51:46 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/08 14:51:48 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/09 15:11:12 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/09 15:11:14 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <fcntl.h>
+#include <errno.h>
 
 #include "ft_file_op.h"
 #include "ft_print_utils.h"
 
-#define BUF_SIZE 4096
-
-void	ft_write_from_stream(int fd)
+int		handle_fd_errors(char *program, char *filename)
 {
-	int		ret;
-	char	buf[BUF_SIZE + 1];
-
-	while ((ret = read(fd, buf, BUF_SIZE)))
-	{
-		buf[ret] = '\0';
-		ft_putstr(buf);
-	}
+	ft_puterr(program);
+	ft_puterr(": ");
+	ft_puterr(filename);
+	if (errno == ENOENT)
+		ft_puterr(": No such file or directory\n");
+	if (errno == EACCES)
+		ft_puterr(": Permission denied\n");
+	return (1);
 }
 
-int		ft_write_from_file(char *filename)
+int		ft_perform_file_op(char *program, char *filename, file_op write_op)
 {
-	return (ft_perform_file_op("cat", filename, ft_write_from_stream));
-}
+	int		fd;
 
-int		main(int argc, char *argv[])
-{
-	if (argc != 2)
-	{
-		ft_putstr(argc == 1 ? "File name missing.\n" : "Too many arguments.\n");
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (handle_fd_errors(program, filename));
+	write_op(fd);
+	if (close(fd) == -1)
 		return (1);
-	}
-	ft_write_from_file(argv[1]);
 	return (0);
 }

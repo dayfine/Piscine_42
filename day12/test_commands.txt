@@ -1,0 +1,16 @@
+ex00
+===============
+./ft_display_file
+./ft_display_file Makefile
+./ft_display_file 1 2
+./ft_display_file b  // file that does not exist
+./ft_display_file c  // file that exists but with no -r right
+
+ex01
+===============
+
+ex02
+
+ex03
+
+ex04
