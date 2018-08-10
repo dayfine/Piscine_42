@@ -15,10 +15,18 @@ ex01
 
 ex02
 ===============
-./ft_tail
+./ft_tail -c +5
 ./ft_tail -c 10 a b c a
+./ft_tail -c -10 a b c a
 ./ft_tail -c +10 a b c a
 
 ex03
+===============
+./ft_hexdump -C
+./ft_hexdump -C a
+./ft_hexdump -C ft_print_utils.h
+./ft_hexdump -C a a
+
 
 ex04
+===============

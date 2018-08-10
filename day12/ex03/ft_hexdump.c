@@ -11,9 +11,13 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "ft_print_utils.h"
+#include "ft_file_op.h"
+#include "ft_hexdump_utils.h"
+#include "ft_str_utils.h"
 
 #define BUF_SIZE 16
 
@@ -22,50 +26,35 @@ void	ft_write_from_stream(int fd)
 	long	ret;
 	long	addr;
 	char	buf[BUF_SIZE + 1];
+	char	*last;
+	int		repeat_printed;
 
+	last = NULL;
 	addr = 0;
+	repeat_printed = 0;
 	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		buf[ret] = '\0';
-		print_address(addr);
-		print_hex(buf);
-		print_ascii(buf);
+		hexdump_line(addr, buf, ft_strcmp(buf, last), &repeat_printed);
+		last = ft_strdup(buf);
 		addr += ret;
 	}
-}
-
-int		handle_fd_errors(char *program, char *filename)
-{
-	ft_putstr(program);
-	ft_putstr(": ");
-	ft_putstr(filename);
-	if (errno == ENOENT)
-		ft_putstr(": No such file or directory\n");
-	if (errno == EACCES)
-		ft_putstr(": Permission denied\n");
-	return (1);
+	print_address(addr);
+	ft_putstr("\n");
 }
 
 int		ft_write_from_file(char *filename)
 {
-	int		fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		return (handle_fd_errors("hexdump", filename));
-	ft_write_from_stream(fd);
-	if (close(fd) == -1)
-		return (1);
-	return (0);
+	return (ft_perform_file_op("hexdump", filename, ft_write_from_stream));
 }
 
 int		main(int argc, char *argv[])
 {
 	int		i;
 
+	i = 1;
 	if (argc <= 2)
 		ft_write_from_stream(STDIN_FILENO);
-	i = 1;
 	while (++i < argc)
 		ft_write_from_file(argv[i]);
 	return (0);

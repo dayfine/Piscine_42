@@ -15,11 +15,21 @@
 #include <errno.h>
 #include <stdio.h>
 
-
 #include "ft_print_utils.h"
 
 #define BUF_SIZE 8192
 
+int		handle_fd_errors(char *program, char *filename)
+{
+	ft_puterr(program);
+	ft_puterr(": ");
+	ft_puterr(filename);
+	if (errno == ENOENT)
+		ft_puterr(": No such file or directory\n");
+	if (errno == EACCES)
+		ft_puterr(": Permission denied\n");
+	return (1);
+}
 
 long	get_file_size(char *filename)
 {
@@ -34,18 +44,6 @@ long	get_file_size(char *filename)
 		len += ret;
 	close(fd);
 	return (len);
-}
-
-int		handle_fd_errors(char *program, char *filename)
-{
-	ft_puterr(program);
-	ft_puterr(": ");
-	ft_puterr(filename);
-	if (errno == ENOENT)
-		ft_puterr(": No such file or directory\n");
-	if (errno == EACCES)
-		ft_puterr(": Permission denied\n");
-	return (1);
 }
 
 void	ft_write_from_stream_w_offset(int fd, long offset,

@@ -14,8 +14,12 @@
 #include <limits.h>
 
 #include "ft_io.h"
-#define IS_SPACE(c) (c == ' ' || c == '\t' || c == '\n' \
-					|| c == '\v' || c == '\f' || c == '\r')
+
+int		is_white_space(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n'
+			|| c == '\v' || c == '\f' || c == '\r');
+}
 
 long	ft_atoi_neg_offset(char *str)
 {
@@ -26,7 +30,7 @@ long	ft_atoi_neg_offset(char *str)
 	i = 0;
 	curr_num = 0;
 	sign = 1;
-	while (IS_SPACE(str[i]))
+	while (is_white_space(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		sign = 1 - 2 * (str[i++] == '-');

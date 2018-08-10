@@ -2,6 +2,9 @@ CFLAGS=-Wall -Wextra -Werror -g
 
 NAME=ft_hexdump
 
+
+
+
 all: $(NAME)
 
 $(NAME):

@@ -15,12 +15,6 @@
 
 void	ft_putstr(char *str);
 
-void	print_ascii(char *str);
-
-void	print_same_line_as_above();
-
-void	print_address(long addr);
-
-void	print_hex(char *str);
+void	ft_puterr(char *str);
 
 #endif
