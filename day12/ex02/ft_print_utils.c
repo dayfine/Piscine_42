@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_print_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 17:37:45 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/08 17:37:46 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/09 15:11:19 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/09 15:11:21 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
+#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str);
+void	ft_putstr_base(char *str, int stream_no)
+{
+	int len;
 
-long	ft_atoi_neg_offset(char *str);
+	len = 0;
+	while (str[len])
+		len++;
+	write(stream_no, str, len);
+}
 
-#endif
+void	ft_putstr(char *str)
+{
+	ft_putstr_base(str, STDOUT_FILENO);
+}
+
+void	ft_puterr(char *str)
+{
+	ft_putstr_base(str, STDERR_FILENO);
+}
