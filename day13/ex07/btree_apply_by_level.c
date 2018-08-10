@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree.h                                         :+:      :+:    :+:   */
+/*   btree_apply_by_level.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/09 21:43:34 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/09 21:43:54 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/10 09:20:32 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/10 09:20:33 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BTREE_H
-# define FT_BTREE_H
+#include "ft_btree.h"
 
-typedef struct		s_btree
+void	btree_apply_by_level(t_btree *root, void (*applyf)(void *item, \
+							int current_level, int is_first_elem))
 {
-	struct s_btree	*left;
-	struct s_btree	*right;
-	void			*item;
-}					t_btree;
-
-t_btree				*btree_create_node(void *item);
-
-#endif
+}

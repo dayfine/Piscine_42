@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree.h                                         :+:      :+:    :+:   */
+/*   btree_search_item.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/09 21:43:34 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/09 21:43:54 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/10 09:20:25 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/10 09:20:27 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BTREE_H
-# define FT_BTREE_H
+#include "ft_btree.h"
 
-typedef struct		s_btree
+void	*btree_search_item(t_btree *root, void *data_ref, \
+							int (*cmpf)(void *, void *))
 {
-	struct s_btree	*left;
-	struct s_btree	*right;
-	void			*item;
-}					t_btree;
-
-t_btree				*btree_create_node(void *item);
-
-#endif
+}

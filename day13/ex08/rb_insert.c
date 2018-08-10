@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree.h                                         :+:      :+:    :+:   */
+/*   rb_insert.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/09 21:43:34 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/09 21:43:54 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/10 09:20:35 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/10 09:20:36 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BTREE_H
-# define FT_BTREE_H
+#include "ft_btree_rb.h"
 
-typedef struct		s_btree
+void	rb_insert(struct s_rb_node **root, void *data, \
+					int (*cmpf)(void *, void *))
 {
-	struct s_btree	*left;
-	struct s_btree	*right;
-	void			*item;
-}					t_btree;
-
-t_btree				*btree_create_node(void *item);
-
-#endif
+}

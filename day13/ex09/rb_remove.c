@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree.h                                         :+:      :+:    :+:   */
+/*   rb_remove.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/09 21:43:34 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/09 21:43:54 by dfan             ###   ########.fr       */
+/*   Created: 2018/08/10 09:20:38 by dfan              #+#    #+#             */
+/*   Updated: 2018/08/10 09:20:39 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BTREE_H
-# define FT_BTREE_H
+#include "ft_btree_rb.h"
 
-typedef struct		s_btree
+void	rb_remove(struct s_rb_node **root, void *data, \
+					int (*cmpf)(void *, void *), void (*freef)(void *))
 {
-	struct s_btree	*left;
-	struct s_btree	*right;
-	void			*item;
-}					t_btree;
-
-#endif
+}
