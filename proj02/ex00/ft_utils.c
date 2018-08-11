@@ -6,7 +6,7 @@
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 15:11:19 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/09 15:11:21 by dfan             ###   ########.fr       */
+/*   Updated: 2018/08/11 11:20:15 by dfan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,3 @@ char	*ft_remove_spaces(char *str)
 	res[j] = '\0';
 	return (res);
 }
-
-int		ft_atoi(char *str)
-{
-	int sign;
-	int curr_num;
-	int i;
-
-	i = 0;
-	curr_num = 0;
-	sign = 1;
-	while (str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-		sign = 1 - 2 * (str[i++] == '-');
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		if (curr_num > INT_MAX / 10)
-			return (sign == 1 ? INT_MAX : INT_MIN);
-		curr_num = 10 * curr_num + (str[i++] - '0');
-	}
-	return (curr_num * sign);
-}
-

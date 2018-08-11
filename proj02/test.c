@@ -4,11 +4,21 @@
 #include <string.h>
 
 #include "./ex00/ft_utils.c"
-
+#include "./ex00/evals.c"
 
 void br(void)
 {
 	printf("\n");
+}
+
+int eval(char *str)
+{
+	char *expr;
+	char **expr_ptr;
+
+	expr = ft_remove_spaces(str);
+	expr_ptr = &expr;
+	return (handle_low_order_op(expr_ptr));
 }
 
 int main(void)
@@ -25,20 +35,17 @@ int main(void)
 		printf("All tests passed for `ft_remove_spaces`\n");
 	}
 
-	printf("%s\n", "==== Utils: ft_atoi ====");
+	printf("%s\n", "==== eval: eval ====");
 	{
-		printf("Tesing `ft_atoi`\n");
+		printf("Tesing `eval`\n");
 
-		assert(ft_atoi(" 98993489")==98993489);
-		assert(ft_atoi("tutorialspoint.com")==0);
-		assert(ft_atoi("a")==0);
-		assert(ft_atoi("abc")==0);
-		assert(ft_atoi(" -42")==-42);
-		assert(ft_atoi(" 14343 and abc")==14343);
-		assert(ft_atoi("-91283472332")==-2147483648);
-		assert(ft_atoi("91283472332")==2147483647);
-		assert(ft_atoi("11111191283472332")==2147483647);
+		assert(eval("1+98993489")==98993490);
+		assert(eval("1 + 98993489")==98993490);
+		assert(eval("1 - -98993489")==98993490);
 
-		printf("All tests passed for `ft_atoi`\n");
+		assert(eval("1 + (5 + 3)*98993 %489")==254);
+		assert(eval("1 + (5 + 3)*10 %7 ")==4);
+
+		printf("All tests passed for `eval`\n");
 	}
 }

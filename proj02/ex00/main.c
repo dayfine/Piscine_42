@@ -11,7 +11,17 @@
 /* ************************************************************************** */
 
 #include "ft_utils.h"
-#include "eval_expr.h"
+#include "evals.h"
+
+int eval_expr(char *str)
+{
+	char *expr;
+	char **expr_ptr;
+
+	expr = ft_remove_spaces(str);
+	expr_ptr = &expr;
+	return (handle_low_order_op(expr_ptr));
+}
 
 int main(int ac, char **av)
 {
