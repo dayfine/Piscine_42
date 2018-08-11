@@ -15,18 +15,26 @@
 void	btree_insert_data(t_btree **root, void *item, \
 							int (*cmpf)(void *, void *))
 {
-	if (cmpf(item, root->item) > 0)
+	t_btree *root_node;
+
+	root_node = *root;
+	if (!root_node)
 	{
-		if (root->right)
-			btree_insert_data(root->right, item, cmpf);
+		*root = btree_create_node(item);
+		return ;
+	}
+	if (cmpf(item, root_node->item) > 0)
+	{
+		if (root_node->right)
+			btree_insert_data(&root_node->right, item, cmpf);
 		else
-			root->right = btree_create_node(item);
+			root_node->right = btree_create_node(item);
 	}
 	else
 	{
-		if (root->left)
-			btree_insert_data(root->left, item, cmpf);
+		if (root_node->left)
+			btree_insert_data(&root_node->left, item, cmpf);
 		else
-			root->left = btree_create_node(item);
+			root_node->left = btree_create_node(item);
 	}
 }

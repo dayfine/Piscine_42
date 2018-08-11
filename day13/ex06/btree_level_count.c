@@ -14,4 +14,12 @@
 
 int		btree_level_count(t_btree *root)
 {
+	int left_count;
+	int	right_count;
+
+	if (root == NULL)
+		return (0);
+	left_count = btree_level_count(root->left);
+	right_count = btree_level_count(root->right);
+	return (1 + (left_count > right_count ? left_count : right_count));
 }
