@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "evals.h"
 
-char get(char **expr)
+char	get(char **expr)
 {
 	char res;
 	char *str;
@@ -25,7 +24,7 @@ char get(char **expr)
 	return (res);
 }
 
-int	num(char **expr)
+int		num(char **expr)
 {
 	int res;
 
@@ -35,7 +34,7 @@ int	num(char **expr)
 	return (res);
 }
 
-int handle_num_and_group(char **expr)
+int		handle_num_and_group(char **expr)
 {
 	int res;
 
@@ -56,7 +55,7 @@ int handle_num_and_group(char **expr)
 	return (0);
 }
 
-int handle_high_order_op(char **expr)
+int		handle_high_order_op(char **expr)
 {
 	int		res;
 	char	op;
@@ -75,7 +74,7 @@ int handle_high_order_op(char **expr)
 	return (res);
 }
 
-int handle_low_order_op(char **expr)
+int		handle_low_order_op(char **expr)
 {
 	int		res;
 	char	op;

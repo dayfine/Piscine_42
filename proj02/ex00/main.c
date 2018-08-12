@@ -13,7 +13,7 @@
 #include "ft_utils.h"
 #include "evals.h"
 
-int eval_expr(char *str)
+int	eval_expr(char *str)
 {
 	char *expr;
 	char **expr_ptr;
@@ -23,7 +23,7 @@ int eval_expr(char *str)
 	return (handle_low_order_op(expr_ptr));
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac > 1)
 	{

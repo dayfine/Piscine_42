@@ -13,14 +13,14 @@
 #ifndef FT_EVALS_H
 # define FT_EVALS_H
 
-char get(char **expr);
+char	get(char **expr);
 
-int	num(char **expr);
+int		num(char **expr);
 
-int handle_num_and_group(char **expr);
+int		handle_num_and_group(char **expr);
 
-int handle_high_order_op(char **expr);
+int		handle_high_order_op(char **expr);
 
-int handle_low_order_op(char **expr);
+int		handle_low_order_op(char **expr);
 
 #endif
