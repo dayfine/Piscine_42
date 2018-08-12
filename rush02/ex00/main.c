@@ -16,7 +16,7 @@
 #include "ft_rushes.h"
 #include "ft_utils.h"
 
-static char	*(*rushes[6])(int, int) = {
+static char	*(*g_rushes[6])(int, int) = {
 	rush00, rush01, rush02, rush03, rush04, NULL
 };
 
@@ -49,8 +49,8 @@ void	solve(char *input)
 	k = -1;
 	while (++k < 5)
 	{
-		expected = rushes[k](i, j);
-		if (ft_strcmp(input, expected)==0)
+		expected = g_rushes[k](i, j);
+		if (ft_strcmp(input, expected) == 0)
 			print_answer(k, count++, i, j);
 		free(expected);
 	}

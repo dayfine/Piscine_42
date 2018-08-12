@@ -12,8 +12,6 @@
 
 #include "ft_rush_core.h"
 
-
-
 char	*rush00(int width, int height)
 {
 	return (rush_iter(width, height, "oooo", "-|"));
