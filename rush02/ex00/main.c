@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ft_rushes.h"
+#include "ft_str_utils.h"
 #include "ft_utils.h"
 
 static char	*(*g_rushes[6])(int, int) = {
@@ -27,9 +28,9 @@ void	print_answer(int idx, int answer_count, int w, int h)
 	ft_putstr("[colle-0");
 	ft_putchar('0' + idx);
 	ft_putstr("] [");
-	ft_putchar('0' + w);
+	ft_putnbr(w);
 	ft_putstr("] [");
-	ft_putchar('0' + h);
+	ft_putnbr(h);
 	ft_putchar(']');
 }
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_str_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,53 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <limits.h>
+#include <stdlib.h>
 
-#include "ft_str_utils.h"
-
-#define BUFFER_SIZE 65536
-
-void	ft_putchar(char c)
+int		ft_strlen(char *str)
 {
-	write(STDOUT_FILENO, &c, 1);
+	int idx;
+
+	idx = 0;
+	while (str[idx] != '\0')
+		idx++;
+	return (idx);
 }
 
-void	ft_putstr(char *str)
+int		ft_strcmp(char *s1, char *s2)
 {
-	write(STDOUT_FILENO, str, ft_strlen(str));
-}
-
-void	ft_putnbr(int nb)
-{
-	int		i;
-	char	digits[20];
+	int i;
 
 	i = 0;
-	if (nb == 0)
-		ft_putchar('0');
-	if (nb == INT_MIN)
-		ft_putstr("-2147483648");
-	if (nb < 0 && nb != INT_MIN)
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-		nb = -nb;
-		ft_putchar('-');
+		if (s1[i] - s2[i] != 0)
+			return (s1[i] - s2[i]);
+		i++;
 	}
-	while (nb >= 1)
-	{
-		digits[i++] = nb % 10;
-		nb = nb / 10;
-	}
-	while (i > 0)
-		ft_putchar(digits[--i] + '0');
+	return (s1[i] - s2[i]);
 }
 
-char	*ft_read_all(int fd)
+char	*ft_strcpy(char *dest, char *src)
 {
-	char	buf[BUFFER_SIZE + 1];
-	int		ret;
+	int i;
 
-	ret = read(fd, buf, BUFFER_SIZE);
-	buf[ret] = '\0';
-	return (ft_strdup(buf));
+	i = -1;
+	while (src[++i] != '\0')
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strdup(char *src)
+{
+	char *dest;
+
+	dest = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	ft_strcpy(dest, src);
+	return (dest);
 }

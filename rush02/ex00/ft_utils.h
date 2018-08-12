@@ -15,11 +15,9 @@
 
 void	ft_putchar(char c);
 
-int		ft_strlen(char *str);
-
 void	ft_putstr(char *str);
 
-int		ft_strcmp(char *s1, char *s2);
+void	ft_putnbr(int nb);
 
 char	*ft_read_all(int fd);
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_str_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,53 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <limits.h>
+#ifndef FT_STR_UTILS_H
+# define FT_STR_UTILS_H
 
-#include "ft_str_utils.h"
+int		ft_strlen(char *str);
 
-#define BUFFER_SIZE 65536
+int		ft_strcmp(char *s1, char *s2);
 
-void	ft_putchar(char c)
-{
-	write(STDOUT_FILENO, &c, 1);
-}
+char	*ft_strcpy(char *dest, char *src);
 
-void	ft_putstr(char *str)
-{
-	write(STDOUT_FILENO, str, ft_strlen(str));
-}
+char	*ft_strdup(char *src);
 
-void	ft_putnbr(int nb)
-{
-	int		i;
-	char	digits[20];
-
-	i = 0;
-	if (nb == 0)
-		ft_putchar('0');
-	if (nb == INT_MIN)
-		ft_putstr("-2147483648");
-	if (nb < 0 && nb != INT_MIN)
-	{
-		nb = -nb;
-		ft_putchar('-');
-	}
-	while (nb >= 1)
-	{
-		digits[i++] = nb % 10;
-		nb = nb / 10;
-	}
-	while (i > 0)
-		ft_putchar(digits[--i] + '0');
-}
-
-char	*ft_read_all(int fd)
-{
-	char	buf[BUFFER_SIZE + 1];
-	int		ret;
-
-	ret = read(fd, buf, BUFFER_SIZE);
-	buf[ret] = '\0';
-	return (ft_strdup(buf));
-}
+#endif
