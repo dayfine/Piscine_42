@@ -6,7 +6,7 @@
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:11:48 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/13 16:12:06 by agauthie         ###   ########.fr       */
+/*   Updated: 2018/08/13 16:33:36 by agauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ft.h"
+
 
 long	get_file_size(char *filename)
 {
@@ -64,12 +65,13 @@ char	*ft_read(char *filename)
 	int		fd;
 	int		i;
 	int		byte_read;
-	char	buff[BUFF_SIZE + 1];
+	char	buff[BUF_SIZE + 1];
 	char	*board;
 	int		j;
+	long	len;
 
 	i = 0;
-	len = get_file_size(*filename);
+	len = get_file_size(filename);
 	board = (char *)malloc(sizeof(char) * len);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -77,7 +79,7 @@ char	*ft_read(char *filename)
 		ft_putstr("open() error.");
 		return ("bad");
 	}
-	while ((byte_read = read(fd, buff, BUFF_SIZE)))
+	while ((byte_read = read(fd, buff, BUF_SIZE)))
 	{
 		j = 0;
 		while (j < byte_read)
@@ -87,33 +89,4 @@ char	*ft_read(char *filename)
 	if (close(fd) == -1)
 		ft_putstr("close() error.");
 	return (board);
-}
-
-
-int			main(int argc, char **argv)
-{
-	int		i;
-	int		byte_read;
-	char	buff[BUFF_SIZE + 1];
-	char	*board;
-
-	i = 1;
-	if (argc == 1)
-	{
-		while ((byte_read = read(0, buff, BUFF_SIZE)))
-		{
-			buff[byte_read] = '\0';
-			ft_putstr(buff);
-		}
-	}
-	while (i < argc)
-	{
-		board = ft_read(argv[i]);
-		check_size(board);
-		printf("board :\n%s\n", board);
-		printf("col :\n%d\n", (check_size(board)));
-		ft_putchar('\n');
-		i++;
-	}
-	return (0);
 }
