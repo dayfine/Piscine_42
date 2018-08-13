@@ -6,3 +6,4 @@
 *_test.c
 *.o
 towel/
+*.dSYM/
