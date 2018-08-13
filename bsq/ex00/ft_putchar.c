@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ychi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/13 11:11:53 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/13 15:11:13 by agauthie         ###   ########.fr       */
+/*   Created: 2018/07/29 10:36:47 by ychi              #+#    #+#             */
+/*   Updated: 2018/07/29 10:50:02 by ychi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include <unistd.h>
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-int		ft_atoi(char *str);
-char	**ft_split_whitespaces(char *str);
-
-#endif
+void	ft_putchar(char a)
+{
+	write(1, &a, 1);
+}
