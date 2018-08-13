@@ -6,12 +6,12 @@
 #    By: agauthie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/13 11:20:53 by agauthie          #+#    #+#              #
-#    Updated: 2018/08/13 16:14:12 by agauthie         ###   ########.fr        #
+#    Updated: 2018/08/13 16:17:54 by agauthie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = bsq
-SOURCES = reader.c ft_utils.c
+SOURCES = reader.c ft_utils.c main.c
 HEADER = ft.h
 FLAGS = -Wall -Wextra -Werror
 OUTPUT = *.o
