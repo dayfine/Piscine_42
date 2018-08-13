@@ -6,7 +6,7 @@
 /*   By: dfan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:11:48 by dfan              #+#    #+#             */
-/*   Updated: 2018/08/13 15:23:46 by agauthie         ###   ########.fr       */
+/*   Updated: 2018/08/13 16:07:21 by agauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,20 @@
 #include <stdlib.h>
 #include "ft.h"
 
-#define BUFF_SIZE 20
+long	get_file_size(char *filename)
+{
+	int		fd;
+	long	ret;
+	long	len;
+	char	buf[BUF_SIZE + 1];
+
+	fd = open(filename, O_RDONLY);
+	len = 0;
+	while ((ret = read(fd, buf, BUF_SIZE)))
+		len += ret;
+	close(fd);
+	return (len);
+}
 
 int			check_size(char *str)
 {
@@ -56,7 +69,8 @@ char	*ft_read(char *filename)
 	int		j;
 
 	i = 0;
-	board = (char *)malloc(sizeof(char) * (BUFF_SIZE +1));
+	len = get_file_size(*filename);
+	board = (char *)malloc(sizeof(char) * len);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
