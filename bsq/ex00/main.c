@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include "ft.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		i;
 	int		byte_read;
