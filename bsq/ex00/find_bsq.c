@@ -42,7 +42,7 @@ void	find_bsq(t_solution *s)
 		j = 0;
 		while (++j < s->width)
 		{
-			dp1[j] = (s->matrix[i][j] == s->symbols[0]) && \
+			dp1[j] = (s->matrix[i][j] != s->symbols[0]) ? 0 : \
 					(1 + min(dp1[j - 1], dp0[j], dp0[j - 1]));
 			update_solution(s, dp1[j], i, j);
 		}

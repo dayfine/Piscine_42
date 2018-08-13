@@ -2,6 +2,21 @@
 #include <stdio.h>
 #include "test_utils.c"
 #include "../ex00/solution.c"
+#include "../ex00/find_bsq.c"
+
+void	make_n_solve(char *symbols, int m, int n, int count)
+{
+	char **map;
+	t_solution *solution;
+
+	map = make_map(symbols, m, n, count);
+	solution = create_solution(map, symbols, m, n);
+	find_bsq(solution);
+	apply_solution(solution);
+	print_board(solution);
+	destroy_board(solution);
+	br();
+}
 
 int main(void)
 {
@@ -10,34 +25,19 @@ int main(void)
 	srand(time(&t));
 
 	char *symbols = ".ox";
-	int m = 10;
-	int n = 10;
-	char **map;
+	int m = 115;
+	int n = 115;
+	int count = 300;
+	int test_count = 10;
 
-	map = make_map(symbols, m, n, 10);
-	print_matrix(map);
-	solver(map, symbols, m, n);
-	br();
+	int i = 0;
 
-	map = make_map(symbols, m, n, 10);
-	print_matrix(map);
-	solver(map, symbols, m, n);
-	br();
-
-	map = make_map(symbols, m, n, 10);
-	print_matrix(map);
-	solver(map, symbols, m, n);
-	br();
-
-	map = make_map(symbols, m, n, 10);
-	print_matrix(map);
-	solver(map, symbols, m, n);
-	br();
-
-	map = make_map(symbols, m, n, 10);
-	print_matrix(map);
-	solver(map, symbols, m, n);
-	br();
+	while (i++ < test_count)
+		make_n_solve(symbols, m, n, count);
+		make_n_solve(symbols, m, n, count);
+		make_n_solve(symbols, m, n, count);
+		make_n_solve(symbols, m, n, count);
+		make_n_solve(symbols, m, n, count);
 
 	return (0);
 }

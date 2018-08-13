@@ -15,28 +15,68 @@
 
 #include "ft.h"
 
-void		update_solution(t_solution *s, int val, int x, int y)
+t_solution	*create_solution(char **matrix, char *symbols, int w, int h)
 {
-	if (val > s->max_size)
+	t_solution *solution;
+
+	solution = malloc(sizeof(t_solution));
+
+	solution->matrix = matrix;
+	solution->symbols = symbols;
+	solution->width = w;
+	solution->height = h;
+	solution->max_size = 0;
+	solution->max_x = -1;
+	solution->max_y = -1;
+	return (solution);
+}
+
+void		destroy_board(t_solution *s)
+{
+	int i;
+
+	i = -1;
+	while (++i < s->height)
+		free(s->matrix[i]);
+	free(s->matrix);
+	free(s);
+}
+
+void		update_solution(t_solution *s, int size, int x, int y)
+{
+	if (size > s->max_size)
 	{
-		s->max_size = val;
+		s->max_size = size;
 		s->max_x = x;
 		s->max_y = y;
 	}
 }
 
-t_solution	*create_solution(void)
+void		apply_solution(t_solution *s)
 {
-	t_solution *solution;
+	int i;
+	int j;
 
-	solution = malloc(t_solution);
-	return (solution);
+	i = s->max_x + 1;
+	while (--i > s->max_x - s->max_size)
+	{
+		j = s->max_y + 1;
+		while (--j > s->max_y - s->max_size)
+			s->matrix[i][j] = s->symbols[2];
+	}
 }
 
 void		print_board(t_solution *s)
 {
-}
+	int i;
+	int j;
 
-void		apply_solution(t_solution *s)
-{
+	i = -1;
+	while (++i < s->height)
+	{
+		j = -1;
+		while (++j < s->width)
+			putchar(s->matrix[i][j]);
+		putchar('\n');
+	}
 }

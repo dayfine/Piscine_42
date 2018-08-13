@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-<<<<<<< HEAD
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -91,5 +90,3 @@ char	*ft_read(char *filename)
 		ft_putstr("close() error.");
 	return (board);
 }
-=======
->>>>>>> initial norm
