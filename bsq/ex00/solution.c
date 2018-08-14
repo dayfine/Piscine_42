@@ -11,14 +11,13 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
 #include "ft.h"
 
-t_solution	*create_solution(char **matrix, char *symbols, int w, int h)
+t_solution	*create_solution(char **matrix, char *symbols, int h, int w)
 {
-	t_solution *solution;
-	int i;
+	t_solution	*solution;
+	int			i;
 
 	solution = malloc(sizeof(t_solution));
 	solution->symbols = symbols;
@@ -41,7 +40,7 @@ void		destroy_board(t_solution *s)
 	i = -1;
 	while (++i < s->height)
 	{
-		if (s->matrix[i])
+		if (s->matrix[i] != NULL)
 			free(s->matrix[i]);
 	}
 	free(s->matrix);
@@ -50,12 +49,9 @@ void		destroy_board(t_solution *s)
 
 void		update_solution(t_solution *s, int size, int x, int y)
 {
-	if (size > s->max_size)
-	{
-		s->max_size = size;
-		s->max_x = x;
-		s->max_y = y;
-	}
+	s->max_size = size;
+	s->max_x = x;
+	s->max_y = y;
 }
 
 void		apply_solution(t_solution *s)
@@ -63,6 +59,8 @@ void		apply_solution(t_solution *s)
 	int i;
 	int j;
 
+	if (s->max_size <= 0)
+		return ;
 	i = s->max_x + 1;
 	while (--i > s->max_x - s->max_size)
 	{
