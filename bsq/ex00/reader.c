@@ -10,83 +10,64 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "ft.h"
 
-
-long	get_file_size(char *filename)
+int		ft_read_meta(int fd, char *symbols, int *row_count_ptr)
 {
-	int		fd;
-	long	ret;
-	long	len;
+	char	buf[1];
+	int		i;
+	int		ret;
+
+	*row_count_ptr = 0;
+	i = 0;
+	while ((ret = read(fd, buf, 1)))
+	{
+		if (!(buf[0] >= '0' && buf[0] <= '9'))
+			break ;
+		*row_count_ptr = *row_count_ptr * 10 + (buf[0] - '0');
+	}
+	symbols[i++] = buf[0];
+	while ((ret = read(fd, buf, 1)))
+	{
+		if (buf[0] == '\n')
+			break ;
+		symbols[i++] = buf[0];
+	}
+	symbols[i] = '\0';
+	return (i == 3);
+}
+
+char	*ft_write_from_stream(int fd, long size)
+{
+	int		ret;
 	char	buf[BUF_SIZE + 1];
-
-	fd = open(filename, O_RDONLY);
-	len = 0;
-	while ((ret = read(fd, buf, BUF_SIZE)))
-		len += ret;
-	close(fd);
-	return (len);
-}
-
-int			check_size(char *str)
-{
-	int		row;
-	int		col;
+	char	*res;
 	int		i;
-	int		nb;
-
-	i = 0;
-	row = 0;
-	col = 0;
-	nb = ft_atoi(str);
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n')
-			row++;
-		if (str[i] != '\n')
-			col++;
-		i++;
-	}
-	printf("str %s\n", str);
-	printf("row %d \n", row);
-	printf("col %d \n", col);
-	if ((row -1) == col)
-		return (col);
-	return (-1);
-}
-char	*ft_read(char *filename)
-{
-	int		fd;
-	int		i;
-	int		byte_read;
-	char	buff[BUF_SIZE + 1];
-	char	*board;
 	int		j;
-	long	len;
 
+	res = malloc(sizeof(char) * (size + 1));
 	i = 0;
-	len = get_file_size(filename);
-	board = (char *)malloc(sizeof(char) * len);
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		ft_putstr("open() error.");
-		return ("bad");
-	}
-	while ((byte_read = read(fd, buff, BUF_SIZE)))
+	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		j = 0;
-		while (j < byte_read)
-			board[i++] = buff[j++];
+		while (j < ret)
+			res[i++] = buf[j++];
 	}
-	board[i] = '\0';
-	if (close(fd) == -1)
-		ft_putstr("close() error.");
-	return (board);
+	res[size] = '\0';
+	return (res);
+}
+
+void	ft_read(int fd)
+{
+	int		row_count;
+	char	*symbols;
+	int		op_status;
+
+	symbols = malloc(sizeof(char) * 4);
+	op_status = ft_read_meta(fd, symbols, &row_count);
+	printf("row: %d; symbols: '%s'\n", row_count, symbols);
 }

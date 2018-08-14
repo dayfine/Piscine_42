@@ -20,7 +20,6 @@ t_solution	*create_solution(char **matrix, char *symbols, int w, int h)
 	t_solution *solution;
 
 	solution = malloc(sizeof(t_solution));
-
 	solution->matrix = matrix;
 	solution->symbols = symbols;
 	solution->width = w;

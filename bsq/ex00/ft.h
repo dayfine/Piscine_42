@@ -12,8 +12,9 @@
 
 #ifndef FT_H
 # define FT_H
-
 # define BUF_SIZE 8192
+
+typedef void	(*t_file_op) (int fd);
 
 typedef struct	s_solution
 {
@@ -26,12 +27,23 @@ typedef struct	s_solution
 	int		max_y;
 }				t_solution;
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-int		ft_atoi(char *str);
-char	**ft_split_whitespaces(char *str);
+void			ft_putchar(char c);
+void			ft_putstr(char *str);
+void			ft_puterr(char *str);
 
-int		check_size(char *str);
-char	*ft_read(char *filename);
+int				ft_atoi(char *str);
+
+int				includes(char *str, char letter);
+char			**ft_split_newlines(char *str);
+
+int				ft_perform_file_op(char *program, char *filename, \
+									t_file_op file_op);
+void			ft_read(int fd);
+
+t_solution		*create_solution(char **matrix, char *symbols, int w, int h);
+void			destroy_board(t_solution *s);
+void			update_solution(t_solution *s, int size, int x, int y);
+void			apply_solution(t_solution *s);
+void			print_board(t_solution *s);
 
 #endif

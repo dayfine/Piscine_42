@@ -81,7 +81,7 @@ char	**ft_split(char *str, char *breaks)
 	return (dest);
 }
 
-char	**ft_split_whitespaces(char *str)
+char	**ft_split_newlines(char *str)
 {
 	return (ft_split(str, "\n"));
 }

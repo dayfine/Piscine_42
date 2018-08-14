@@ -11,7 +11,8 @@
 # **************************************************************************** #
 
 NAME = bsq
-SOURCES = reader.c ft_utils.c main.c
+SOURCES = file_op.c find_bsq.c ft_print_utils.c ft_utils.c reader.c solution.c \
+	main.c
 HEADER = ft.h
 FLAGS = -Wall -Wextra -Werror
 OUTPUT = *.o

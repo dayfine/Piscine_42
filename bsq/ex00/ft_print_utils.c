@@ -13,29 +13,33 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int		ft_atoi(char *str)
+void	ft_putchar(char a)
 {
-	int	sign;
-	int	res;
+	write(STDOUT_FILENO, &a, 1);
+}
 
-	sign = 1;
-	res = 0;
-	while ((*str >= 9 && *str <= 13) || (*str == 32))
-	{
-		str++;
-	}
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-		{
-			sign = -1;
-		}
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		res = res * 10 + *str - 48;
-		str++;
-	}
-	return (res * sign);
+void	ft_putstr_base(char *str, int stream_no)
+{
+	int len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	write(stream_no, str, len);
+}
+
+void	ft_putstr(char *str)
+{
+	ft_putstr_base(str, STDOUT_FILENO);
+}
+
+void	ft_puterr(char *str)
+{
+	ft_putstr_base(str, STDERR_FILENO);
+}
+
+void	ft_maperr(int *maperr)
+{
+	*maperr = 1;
+	ft_puterr("map error\n");
 }
