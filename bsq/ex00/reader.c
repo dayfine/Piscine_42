@@ -105,7 +105,7 @@ int		ft_read_line(int fd, int idx, t_solution *s)
 	res[size] = '\0';
 	s->matrix[idx] = res;
 	if (idx == s->height - 1)
-		return (read(fd, buf, size + 1) != 0);
+		return (fd != 0 && read(fd, buf, size + 1) != 0);
 	return (0);
 }
 
