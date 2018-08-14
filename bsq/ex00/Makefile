@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = bsq
-SOURCES = file_op.c find_bsq.c ft_print_utils.c ft_utils.c reader.c solution.c \
+SOURCES = find_bsq.c list.c print_utils.c reader.c solution.c \
 	main.c
 HEADER = ft.h
 FLAGS = -Wall -Wextra -Werror
@@ -23,7 +23,7 @@ all:
 clean:
 	rm -f $(OUTPUT)
 
-fclean : clean
+fclean: clean
 	rm -f $(NAME)
 
-re : fclean all
+re: fclean all

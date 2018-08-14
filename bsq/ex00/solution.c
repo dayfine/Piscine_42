@@ -68,14 +68,11 @@ void		apply_solution(t_solution *s)
 void		print_board(t_solution *s)
 {
 	int i;
-	int j;
 
 	i = -1;
 	while (++i < s->height)
 	{
-		j = -1;
-		while (++j < s->width)
-			putchar(s->matrix[i][j]);
-		putchar('\n');
+		ft_putstr(s->matrix[i]);
+		ft_putchar('\n');
 	}
 }
