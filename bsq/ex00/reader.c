@@ -12,7 +12,6 @@
 
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "ft.h"
 
@@ -97,7 +96,7 @@ int		ft_read_line(int fd, int idx, t_solution *s)
 	i = -1;
 	while (++i < size)
 	{
-		if (!includes(s->symbols, buf[0]))
+		if (!includes(s->symbols, buf[i]))
 			return (1);
 		res[i] = buf[i];
 	}
@@ -105,6 +104,8 @@ int		ft_read_line(int fd, int idx, t_solution *s)
 		return (1);
 	res[size] = '\0';
 	s->matrix[idx] = res;
+	if (idx == s->height - 1)
+		return (read(fd, buf, size + 1) != 0);
 	return (0);
 }
 

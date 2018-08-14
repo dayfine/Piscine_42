@@ -49,6 +49,10 @@ int	main(int argc, char **argv)
 		ft_bsq_map_op(STDIN_FILENO);
 	i = 0;
 	while (++i < argc)
+	{
 		ft_perform_file_op("bsq", argv[i], ft_bsq_map_op);
+		if (argc > 2 && i != argc - 1)
+			ft_putchar('\n');
+	}
 	return (0);
 }

@@ -18,15 +18,19 @@
 t_solution	*create_solution(char **matrix, char *symbols, int w, int h)
 {
 	t_solution *solution;
+	int i;
 
 	solution = malloc(sizeof(t_solution));
-	solution->matrix = matrix;
 	solution->symbols = symbols;
 	solution->width = w;
 	solution->height = h;
 	solution->max_size = 0;
 	solution->max_x = -1;
 	solution->max_y = -1;
+	solution->matrix = matrix;
+	i = 0;
+	while (++i < h)
+		matrix[i] = NULL;
 	return (solution);
 }
 
@@ -36,7 +40,10 @@ void		destroy_board(t_solution *s)
 
 	i = -1;
 	while (++i < s->height)
-		free(s->matrix[i]);
+	{
+		if (s->matrix[i])
+			free(s->matrix[i]);
+	}
 	free(s->matrix);
 	free(s);
 }
