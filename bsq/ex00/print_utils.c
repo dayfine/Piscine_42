@@ -10,49 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 void	ft_putchar(char a)
 {
-	write(1, &a, 1);
+	write(STDOUT_FILENO, &a, 1);
+}
+
+void	ft_putstr_base(char *str, int stream_no)
+{
+	int len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	write(stream_no, str, len);
 }
 
 void	ft_putstr(char *str)
 {
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+	ft_putstr_base(str, STDOUT_FILENO);
 }
 
-int		ft_atoi(char *str)
+void	ft_puterr(char *str)
 {
-	int	sign;
-	int	res;
+	ft_putstr_base(str, STDERR_FILENO);
+}
 
-	sign = 1;
-	res = 0;
-	while ((*str >= 9 && *str <= 13) || (*str == 32))
-	{
-		str++;
-	}
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-		{
-			sign = -1;
-		}
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		res = res * 10 + *str - 48;
-		str++;
-	}
-	return (res * sign);
+void	ft_maperr(void)
+{
+	ft_puterr("map error\n");
 }

@@ -23,6 +23,22 @@ int		min(int x, int y, int z)
 		return (x > z ? z : x);
 }
 
+int		*prepare_first_row(t_solution *s)
+{
+	int *dp;
+	int j;
+
+	dp = malloc(sizeof(int) * (s->width + 1));
+	j = -1;
+	while (++j < s->width)
+	{
+		dp[j] = s->matrix[0][j] == s->symbols[0];
+		if (dp[j] > s->max_size)
+			update_solution(s, dp[j], 0, j);
+	}
+	return (dp);
+}
+
 void	find_bsq(t_solution *s)
 {
 	int i;
@@ -30,10 +46,7 @@ void	find_bsq(t_solution *s)
 	int *dp0;
 	int *dp1;
 
-	dp0 = malloc(sizeof(int) * (s->width + 1));
-	j = -1;
-	while (++j < s->width)
-		dp0[j] = s->matrix[0][j] == s->symbols[0];
+	dp0 = prepare_first_row(s);
 	i = 0;
 	while (++i < s->height)
 	{
@@ -44,10 +57,11 @@ void	find_bsq(t_solution *s)
 		{
 			dp1[j] = (s->matrix[i][j] != s->symbols[0]) ? 0 : \
 					(1 + min(dp1[j - 1], dp0[j], dp0[j - 1]));
-			update_solution(s, dp1[j], i, j);
+			if (dp1[j] > s->max_size)
+				update_solution(s, dp1[j], i, j);
 		}
 		free(dp0);
 		dp0 = dp1;
 	}
-	free(dp1);
+	free(s->height > 1 ? dp1 : dp0);
 }

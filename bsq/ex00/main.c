@@ -9,38 +9,50 @@
 /*   Updated: 2018/08/13 16:29:58 by agauthie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+
 #include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include <fcntl.h>
+#include <errno.h>
+
 #include "ft.h"
+
+int	handle_fd_errors(char *program, char *filename)
+{
+	ft_puterr(program);
+	ft_puterr(": ");
+	ft_puterr(filename);
+	if (errno == ENOENT)
+		ft_puterr(": No such file or directory\n");
+	if (errno == EACCES)
+		ft_puterr(": Permission denied\n");
+	return (1);
+}
+
+int	ft_perform_file_op(char *program, char *filename, t_file_op file_op)
+{
+	int		fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		return (handle_fd_errors(program, filename));
+	file_op(fd);
+	if (close(fd) == -1)
+		return (1);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
 	int		i;
-	int		byte_read;
-	char	buff[BUF_SIZE + 1];
-	char	*board;
 
-	i = 1;
 	if (argc == 1)
+		ft_bsq_map_op(STDIN_FILENO);
+	i = 0;
+	while (++i < argc)
 	{
-		while ((byte_read = read(0, buff, BUF_SIZE)))
-		{
-			buff[byte_read] = '\0';
-			ft_putstr(buff);
-		}
-	}
-	while (i < argc)
-	{
-		board = ft_read(argv[i]);
-		check_size(board);
-		printf("board :\n%s\n", board);
-		printf("col :\n%d\n", (check_size(board)));
-		ft_putchar('\n');
-		i++;
+		ft_perform_file_op("bsq", argv[i], ft_bsq_map_op);
+		if (argc > 2 && i != argc - 1)
+			ft_putchar('\n');
 	}
 	return (0);
 }
