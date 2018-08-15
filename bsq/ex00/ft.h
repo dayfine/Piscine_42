@@ -15,6 +15,17 @@
 
 # define BUF_SIZE 8192
 
+typedef struct	s_solution
+{
+	char	**matrix;
+	char	*symbols;
+	int		width;
+	int		height;
+	int		max_size;
+	int		max_x;
+	int		max_y;
+}				t_solution;
+
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 int		ft_atoi(char *str);
