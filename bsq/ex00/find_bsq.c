@@ -23,6 +23,11 @@ int		min(int x, int y, int z)
 		return (x > z ? z : x);
 }
 
+int		is_obstacle(char c, t_solution *s)
+{
+	return (c == s->symbols[1]);
+}
+
 int		*prepare_first_row(t_solution *s)
 {
 	int *dp;
@@ -32,7 +37,7 @@ int		*prepare_first_row(t_solution *s)
 	j = -1;
 	while (++j < s->width)
 	{
-		dp[j] = s->matrix[0][j] == s->symbols[0];
+		dp[j] = !is_obstacle(s->matrix[0][j], s);
 		if (dp[j] > s->max_size)
 			update_solution(s, dp[j], 0, j);
 	}
@@ -51,11 +56,11 @@ void	find_bsq(t_solution *s)
 	while (++i < s->height)
 	{
 		dp1 = malloc(sizeof(int) * (s->width + 1));
-		dp1[0] = s->matrix[i][0] == s->symbols[0];
+		dp1[0] = !is_obstacle(s->matrix[i][0], s);
 		j = 0;
 		while (++j < s->width)
 		{
-			dp1[j] = (s->matrix[i][j] != s->symbols[0]) ? 0 : \
+			dp1[j] = is_obstacle(s->matrix[i][j], s) ? 0 : \
 					(1 + min(dp1[j - 1], dp0[j], dp0[j - 1]));
 			if (dp1[j] > s->max_size)
 				update_solution(s, dp1[j], i, j);
